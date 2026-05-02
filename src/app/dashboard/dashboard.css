@@ -1,0 +1,278 @@
+/* ───────────────────────────────────────────────
+   Dashboard Dark Theme Scope
+   All UI tokens are overridden for .dashboard-layout
+─────────────────────────────────────────────── */
+.dashboard-layout {
+    /* Dark surface tokens */
+    --bg: #0f1117;
+    --bg-subtle: #161b26;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e5e7eb;
+    --text-muted: #6b7280;
+}
+
+/* Cards */
+.dashboard-layout .card {
+    background: #161b26;
+    border-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    color: #e5e7eb;
+}
+
+/* Headings inside dashboard */
+.dashboard-layout h1,
+.dashboard-layout h2,
+.dashboard-layout h3 {
+    color: #f9fafb;
+}
+
+/* Muted text */
+.dashboard-layout p,
+.dashboard-layout span:not(.sidebar-label):not(.badge):not([class*='text-']) {
+    color: #9ca3af;
+}
+
+/* Labels */
+.dashboard-layout .label {
+    color: #d1d5db;
+}
+
+/* Inputs */
+.dashboard-layout .input {
+    background: #0f1117;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #f3f4f6;
+}
+
+.dashboard-layout .input:focus {
+    border-color: var(--brand-500);
+    box-shadow: 0 0 0 3px rgb(59 99 247 / 0.2);
+}
+
+.dashboard-layout .input::placeholder {
+    color: #4b5563;
+}
+
+/* Secondary button */
+.dashboard-layout .btn-secondary {
+    background: rgba(255, 255, 255, 0.07);
+    color: #e5e7eb;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-layout .btn-secondary:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Ghost button */
+.dashboard-layout .btn-ghost {
+    color: #9ca3af;
+}
+
+.dashboard-layout .btn-ghost:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.06);
+    color: #e5e7eb;
+}
+
+/* Danger button */
+.dashboard-layout .btn-danger {
+    background: rgba(185, 28, 28, 0.18);
+    color: #fca5a5;
+    border: 1px solid rgba(185, 28, 28, 0.3);
+}
+
+.dashboard-layout .btn-danger:hover:not(:disabled) {
+    background: rgba(185, 28, 28, 0.28);
+}
+
+/* Badges */
+.dashboard-layout .badge-blue {
+    background: rgba(29, 78, 216, 0.2);
+    color: #93c5fd;
+}
+
+.dashboard-layout .badge-green {
+    background: rgba(6, 95, 70, 0.2);
+    color: #6ee7b7;
+}
+
+.dashboard-layout .badge-red {
+    background: rgba(185, 28, 28, 0.2);
+    color: #fca5a5;
+}
+
+.dashboard-layout .badge-purple {
+    background: rgba(91, 33, 182, 0.2);
+    color: #c4b5fd;
+}
+
+.dashboard-layout .badge-gray {
+    background: rgba(255, 255, 255, 0.06);
+    color: #9ca3af;
+}
+
+.dashboard-layout .badge-amber {
+    background: rgba(146, 64, 14, 0.2);
+    color: #fcd34d;
+}
+
+/* Field helpers */
+.dashboard-layout .field-hint {
+    color: #6b7280;
+}
+
+/* Success / info banners inside dashboard */
+.dashboard-layout [class*='bg-emerald-50'] {
+    background: rgba(5, 150, 105, 0.12) !important;
+    border-color: rgba(5, 150, 105, 0.3) !important;
+    color: #6ee7b7 !important;
+}
+
+.dashboard-layout [class*='bg-red-50'] {
+    background: rgba(185, 28, 28, 0.12) !important;
+    border-color: rgba(185, 28, 28, 0.3) !important;
+    color: #fca5a5 !important;
+}
+
+.dashboard-layout [class*='bg-blue-50'] {
+    background: rgba(29, 78, 216, 0.12) !important;
+    border-color: rgba(29, 78, 216, 0.3) !important;
+    color: #93c5fd !important;
+}
+
+/* Scrollbar inside dashboard */
+.dashboard-layout ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.dashboard-layout ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* Override hardcoded Tailwind text/bg classes inside dashboard */
+/* Text colors */
+.dashboard-layout .text-gray-900 {
+    color: #f9fafb !important;
+}
+
+.dashboard-layout .text-gray-800 {
+    color: #f3f4f6 !important;
+}
+
+.dashboard-layout .text-gray-700 {
+    color: #d1d5db !important;
+}
+
+.dashboard-layout .text-gray-600 {
+    color: #9ca3af !important;
+}
+
+.dashboard-layout .text-gray-500 {
+    color: #9ca3af !important;
+}
+
+.dashboard-layout .text-gray-400 {
+    color: #6b7280 !important;
+}
+
+.dashboard-layout .text-gray-300 {
+    color: #6b7280 !important;
+}
+
+/* Background colors */
+.dashboard-layout .bg-white {
+    background: #161b26 !important;
+}
+
+.dashboard-layout .bg-gray-50 {
+    background: #0f1117 !important;
+}
+
+.dashboard-layout .bg-gray-100 {
+    background: #1a2133 !important;
+}
+
+.dashboard-layout .bg-gray-200 {
+    background: #212d40 !important;
+}
+
+/* Border colors */
+.dashboard-layout .border-gray-200 {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dashboard-layout .border-gray-300 {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Specific hover states used in component classes */
+.dashboard-layout .hover\:bg-gray-100:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Icon picker modal override */
+.dashboard-layout [class*='bg-gray-50'][class*='border-gray-200'] {
+    background: #1a2133 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #e5e7eb;
+}
+
+/* Font mono URL bar in dashboard home */
+.dashboard-layout .font-mono {
+    color: #93c5fd;
+}
+
+
+/* ═══════════════════════════════════════════════
+   Dashboard Layout
+═══════════════════════════════════════════════ */
+
+/* Mobile (< 768px): full-width, no sidebar column */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100dvh;
+}
+
+/* Tablet (≥ 768px): icon rail (64px) + content */
+@media (min-width: 768px) {
+    .dashboard-layout {
+        grid-template-columns: 64px 1fr;
+    }
+}
+
+/* Desktop (≥ 1024px): full sidebar (220px) + content */
+@media (min-width: 1024px) {
+    .dashboard-layout {
+        grid-template-columns: 220px 1fr;
+    }
+}
+
+/* Wide (≥ 1280px): sidebar + content + live preview */
+@media (min-width: 1280px) {
+    .dashboard-layout {
+        grid-template-columns: 220px 1fr auto;
+    }
+}
+
+/* ── Dashboard main ── */
+.dashboard-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background: #0f1117;
+    flex: 1;
+    position: relative;
+    /* Clearance for mobile top bar + bottom tab bar */
+    padding-top: 3.5rem;
+    /* 56px = h-14 top bar */
+    padding-bottom: 4rem;
+    /* 64px = h-16 bottom tab bar */
+}
+
+@media (min-width: 768px) {
+    .dashboard-main {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
