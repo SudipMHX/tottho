@@ -54,6 +54,7 @@ export default async function ShowcasePage() {
                           width={48}
                           height={48}
                           className="w-12 h-12 rounded-full object-cover"
+                          unoptimized
                         />
                       ) : (
                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FFA040] to-purple-600 flex items-center justify-center text-white font-bold text-lg">

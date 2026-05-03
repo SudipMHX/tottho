@@ -29,9 +29,9 @@ export default function ShowcaseGrid({ initialProfiles }: { initialProfiles: Pro
   }
 
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {profiles.map((profile) => (
-        <div key={profile._id} className="card flex items-center gap-3">
+        <div key={profile._id} className="card w-full flex items-center gap-3">
           {profile.avatar ? (
             <Image
               src={profile.avatar}
@@ -39,6 +39,7 @@ export default function ShowcaseGrid({ initialProfiles }: { initialProfiles: Pro
               width={48}
               height={48}
               className="w-12 h-12 rounded-full object-cover shrink-0"
+              unoptimized
             />
           ) : (
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FFA040] to-purple-600 flex items-center justify-center text-white font-bold shrink-0">

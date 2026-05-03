@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# [Tottho - Single Page Link Share Platform](https://tottho.pro.bd)
 
-## Getting Started
+Tottho is a modern, high-performance platform built with Next.js, allowing users to create fully customizable and beautifully animated profile pages.
 
-First, run the development server:
+![Tottho Preview](./public/og-default.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+VISIT : [https://tottho.pro.bd](https://tottho.pro.bd)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **20+ Customizable Themes**: A unified `LinkButton` component that seamlessly handles all theme styles and motion variants.
+- **Modern Dashboard & Admin Panel**: Fully responsive, dark-mode ready dashboard built with Tailwind CSS v4 and Framer Motion for smooth UI transitions.
+- **Secure Authentication**: Robust auth flow with multi-layer rate-limiting (IP-based, email-based, progressive lockouts) and Zod validation.
+- **Drag & Drop Reordering**: Easily manage your links using an intuitive drag-and-drop interface powered by `@dnd-kit`.
+- **Media Uploads**: Integrated with UploadThing for seamless profile picture and background image uploads.
+- **Analytics**: Built-in analytics dashboard utilizing Recharts to track link clicks and profile views.
+- **Stunning Visuals**: Interactive background meshes and advanced effects using Three.js and `@paper-design/shaders-react`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+- **Framework**: Next.js 16.2.4 (App Router)
+- **UI Library**: React 19
+- **Styling**: Tailwind CSS v4
+- **Animations**: Framer Motion
+- **Database**: MongoDB (via Mongoose)
+- **Authentication**: JWT (`jose`), `bcryptjs`, custom rate-limiting middleware
+- **Validation**: Zod
+- **Icons**: Lucide React & React Icons
+- **Uploads**: UploadThing
+- **Emails**: Nodemailer
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/src/app`: Next.js App Router pages, layouts, and API routes
+- `/src/components`: Reusable React UI components
+- `/src/hooks`: Custom React hooks
+- `/src/lib`: Utility functions and library configurations
+- `/src/models`: Mongoose database schemas
+- `/public`: Static assets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🤝 Contributing
 
-## Deploy on Vercel
+Contributions, issues, and feature requests are welcome!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
