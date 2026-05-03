@@ -1,6 +1,6 @@
 import connectDB from '@/lib/db'
 import Profile from '@/models/Profile'
-import User from '@/models/User'
+import '@/models/User' // Ensure User schema is registered before populate
 import Image from 'next/image'
 import Link from 'next/link'
 import { FiExternalLink } from 'react-icons/fi'

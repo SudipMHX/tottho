@@ -1,6 +1,6 @@
 import connectDB from '@/lib/db'
 import Profile from '@/models/Profile'
-import User from '@/models/User'
+import '@/models/User'
 import ShowcaseGrid from '@/components/admin/ShowcaseGrid'
 import type { Metadata } from 'next'
 
