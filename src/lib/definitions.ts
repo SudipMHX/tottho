@@ -26,6 +26,13 @@ export const ProfileUpdateSchema = z.object({
   seoDescription: z.string().max(160).trim().optional(),
 })
 
+export const LinkSchema = z.object({
+  title: z.string().min(1, { message: 'Title is required' }).max(100, { message: 'Title is too long' }).trim(),
+  url: z.string().url({ message: 'Must be a valid URL' }).trim(),
+  icon: z.string().optional(),
+  isActive: z.boolean().optional(),
+})
+
 export const UsernameSchema = z
   .string()
   .min(3)

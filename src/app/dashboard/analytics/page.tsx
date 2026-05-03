@@ -32,8 +32,8 @@ export default async function AnalyticsPage() {
   return (
     <div className="p-8 max-w-3xl animate-fade-in">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Analytics</h1>
-        <p className="text-gray-500 text-sm mt-1">Track your profile views and link clicks.</p>
+        <h1 className="text-2xl font-bold gradient-text">Analytics</h1>
+        <p className="text-gray-[#9ca3af] text-sm mt-1">Track your profile views and link clicks.</p>
       </div>
 
       <AnalyticsChart

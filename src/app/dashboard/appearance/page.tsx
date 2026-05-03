@@ -17,12 +17,12 @@ export default async function AppearancePage() {
   return (
     <div className="p-4 sm:p-8 max-w-3xl animate-fade-in">
       <div className="mb-6 sm:mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Appearance</h1>
+        <h1 className="text-2xl font-bold gradient-text">Appearance</h1>
         <p className="text-gray-500 text-sm mt-1">Choose a theme for your public profile page.</p>
       </div>
 
-      <div className="card">
-        <h2 className="font-semibold text-gray-900 mb-1">Theme</h2>
+      <div className="">
+        <h2 className="font-semibold text-white mb-1">Theme</h2>
         <p className="text-sm text-gray-400 mb-6">Click a theme to apply it instantly to your profile.</p>
         <ThemeSelector currentTheme={profile?.theme || 'default'} />
       </div>

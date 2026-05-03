@@ -47,7 +47,7 @@ export default function ShowcaseGrid({ initialProfiles }: { initialProfiles: Pro
           )}
 
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-gray-900 text-sm truncate">
+            <p className="font-semibold text-white text-sm truncate">
               {profile.displayName || profile.username}
             </p>
             <p className="text-xs text-gray-400">@{profile.username}</p>

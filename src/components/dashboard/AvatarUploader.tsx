@@ -114,7 +114,7 @@ export default function AvatarUploader({ currentAvatar, displayName }: Props) {
 
   return (
     <div className="card">
-      <h2 className="font-semibold text-gray-900 mb-1">Profile avatar</h2>
+      <h2 className="font-semibold text-white mb-1">Profile avatar</h2>
       <p className="text-sm text-gray-400 mb-5">
         Upload a photo. Images are automatically compressed before upload to save storage.
       </p>

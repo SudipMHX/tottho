@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useState, useEffect, useTransition } from 'react'
 import {
   DndContext,
   closestCenter,
@@ -39,6 +39,11 @@ export default function LinksManager({ initialLinks }: { initialLinks: Link[] })
   const [newUrl, setNewUrl] = useState('')
   const [newIcon, setNewIcon] = useState('FaLink')
   const [isPending, startTransition] = useTransition()
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    setLinks(initialLinks)
+  }, [initialLinks])
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -59,15 +64,20 @@ export default function LinksManager({ initialLinks }: { initialLinks: Link[] })
 
   async function handleAddLink() {
     if (!newTitle || !newUrl) return
-    const fd = new FormData()
-    fd.append('title', newTitle)
-    fd.append('url', newUrl)
-    fd.append('icon', newIcon)
-    await addLink(fd)
-    setNewTitle('')
-    setNewUrl('')
-    setNewIcon('FaLink')
-    setShowAdd(false)
+    setError('')
+    try {
+      const fd = new FormData()
+      fd.append('title', newTitle)
+      fd.append('url', newUrl)
+      fd.append('icon', newIcon)
+      await addLink(fd)
+      setNewTitle('')
+      setNewUrl('')
+      setNewIcon('FaLink')
+      setShowAdd(false)
+    } catch (err: any) {
+      setError(err.message)
+    }
   }
 
   const NewIcon = getIcon(newIcon)
@@ -78,11 +88,12 @@ export default function LinksManager({ initialLinks }: { initialLinks: Link[] })
       {showAdd ? (
         <div className="card border-[#FF5240]/20 bg-[#FF5240]/10/50">
           <div className="flex items-center justify-between mb-4">
-            <p className="font-semibold text-gray-900">Add new link</p>
+            <p className="font-semibold text-gray-300">Add new link</p>
             <button onClick={() => setShowAdd(false)} className="btn btn-ghost btn-icon btn-sm text-gray-400">
               <FiX />
             </button>
           </div>
+          {error && <p className="text-red-400 text-sm mb-3">{error}</p>}
           <div className="flex flex-col gap-3">
             <input
               className="input"

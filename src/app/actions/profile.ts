@@ -5,7 +5,7 @@ import connectDB from '@/lib/db'
 import Profile from '@/models/Profile'
 import Link from '@/models/Link'
 import { getSession } from '@/lib/session'
-import { ProfileUpdateSchema, FormState } from '@/lib/definitions'
+import { ProfileUpdateSchema, LinkSchema, FormState } from '@/lib/definitions'
 
 export async function updateProfile(state: FormState, formData: FormData): Promise<FormState> {
   const session = await getSession()
@@ -63,16 +63,21 @@ export async function addLink(formData: FormData) {
   const session = await getSession()
   if (!session) throw new Error('Unauthorized')
 
-  const title = formData.get('title') as string
-  const url = formData.get('url') as string
-  const icon = (formData.get('icon') as string) || 'FaLink'
+  const raw = {
+    title: formData.get('title') as string,
+    url: formData.get('url') as string,
+    icon: (formData.get('icon') as string) || 'FaLink',
+  }
 
-  if (!title || !url) throw new Error('Title and URL are required')
+  const validated = LinkSchema.safeParse(raw)
+  if (!validated.success) {
+    throw new Error(validated.error.errors[0].message)
+  }
 
   await connectDB()
 
   const count = await Link.countDocuments({ userId: session.userId })
-  await Link.create({ userId: session.userId, title, url, icon, order: count })
+  await Link.create({ userId: session.userId, ...validated.data, order: count })
 
   revalidatePath('/dashboard/links')
   revalidatePath('/dashboard', 'layout')
@@ -83,8 +88,13 @@ export async function updateLink(linkId: string, data: { title?: string; url?: s
   const session = await getSession()
   if (!session) throw new Error('Unauthorized')
 
+  const validated = LinkSchema.partial().safeParse(data)
+  if (!validated.success) {
+    throw new Error(validated.error.errors[0].message)
+  }
+
   await connectDB()
-  await Link.findOneAndUpdate({ _id: linkId, userId: session.userId }, data)
+  await Link.findOneAndUpdate({ _id: linkId, userId: session.userId }, validated.data)
 
   revalidatePath('/dashboard/links')
   revalidatePath('/dashboard', 'layout')

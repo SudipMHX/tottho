@@ -26,7 +26,7 @@ export default async function LinksPage() {
   return (
     <div className="p-4 sm:p-8 max-w-2xl animate-fade-in">
       <div className="mb-6 sm:mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Links</h1>
+        <h1 className="text-2xl font-bold gradient-text">Links</h1>
         <p className="text-gray-500 text-sm mt-1">Add, edit, and reorder your links. Drag to change order.</p>
       </div>
       <LinksManager initialLinks={serializedLinks} />

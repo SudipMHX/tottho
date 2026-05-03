@@ -1,4 +1,3 @@
-import '@/app/dashboard/dashboard.css'
 import { redirect } from 'next/navigation'
 import { getSession } from '@/lib/session'
 import DashboardSidebar from '@/components/layout/DashboardSidebar'
@@ -23,19 +22,19 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const version = Math.max(pTime, lTime).toString()
 
   return (
-    <div className="dashboard-layout">
+    <div className="grid grid-cols-1 md:grid-cols-[64px_1fr] lg:grid-cols-[220px_1fr] xl:grid-cols-[220px_1fr_auto] min-h-dvh bg-[#0f1117] text-[#e5e7eb]">
       {/* Desktop sidebar — only visible on md+ via CSS */}
       <DashboardSidebar username={session.username} role={session.role} />
 
       {/* Main content area */}
-      <main className="dashboard-main">
+      <main className="flex flex-col flex-1 min-h-dvh bg-[#0f1117] relative pt-14 pb-16 md:py-0">
         {/* Mobile navigation — fixed overlays, rendered inside main so they don't affect the grid */}
         <MobileNav username={session.username} role={session.role} />
         {children}
       </main>
 
       {/* Live preview pane — only visible on xl+ */}
-      <MobilePreview username={session.username} version={version} />
+     {session.role === 'admin' ? null : <MobilePreview username={session.username} version={version} />}
     </div>
   )
 }

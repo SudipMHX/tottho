@@ -18,15 +18,15 @@ export default async function SettingsPage() {
   return (
     <div className="p-4 sm:p-8 max-w-2xl animate-fade-in space-y-3">
       <div className="">
-        <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
+        <h1 className="text-2xl font-bold gradient-text">Settings</h1>
         <p className="text-gray-500 text-sm mt-1">Update your profile information and SEO settings.</p>
       </div>
 
       <div className="card">
-        <h2 className="font-semibold text-gray-900 mb-1">Username</h2>
+        <h2 className="font-semibold text-white mb-1">Username</h2>
         <p className="text-sm text-gray-500">
           Your page is at{' '}
-          <span className="font-mono text-[#FF5240]">
+          <span className="font-mono gradient-text font-bold">
             {process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/{session.username}
           </span>
         </p>

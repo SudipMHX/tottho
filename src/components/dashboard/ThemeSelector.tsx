@@ -197,13 +197,13 @@ export default function ThemeSelector({ currentTheme }: { currentTheme: string }
             onClick={() => handleSelect(theme.id)}
             disabled={isPending}
             className={`
-              relative flex flex-col gap-2 p-3 rounded-2xl border-2 transition-all text-left
+              relative flex flex-col gap-2 p-3 rounded-2xl shadow shadow-[#FF5240]/20 transition-all text-left
               ${isActive ? 'border-[#FF5240] ring-2 ring-[#FF5240]/20' : 'border-gray-200 hover:border-gray-300'}
             `}
           >
             {/* Mini preview */}
             <div
-              className={`h-16 rounded-xl border ${theme.preview} flex flex-col items-center justify-center gap-1`}
+              className={`h-20 rounded-xl border ${theme.preview} flex flex-col items-center justify-center gap-1`}
               style={theme.previewStyle}
             >
               <div className="w-6 h-6 rounded-full bg-white/30" />
@@ -211,7 +211,7 @@ export default function ThemeSelector({ currentTheme }: { currentTheme: string }
               <div className={`w-10 h-1.5 rounded-full ${theme.accent} opacity-60`} />
             </div>
             <div>
-              <p className="text-xs font-semibold text-gray-800">{theme.name}</p>
+              <p className="text-xs font-semibold text-gray-200">{theme.name}</p>
               <p className="text-xs text-gray-400">{theme.description}</p>
             </div>
             {isActive && (

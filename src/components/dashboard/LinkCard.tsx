@@ -88,7 +88,7 @@ export default function LinkCard({ link }: { link: Link }) {
         </div>
       ) : (
         <div className="flex-1 min-w-0">
-          <p className="font-semibold text-sm text-gray-900 truncate">{link.title}</p>
+          <p className="font-semibold text-sm text-gray-300 truncate">{link.title}</p>
           <p className="text-xs text-gray-400 truncate">{link.url}</p>
           <p className="text-xs text-gray-300 mt-0.5">{link.clicks} clicks</p>
         </div>

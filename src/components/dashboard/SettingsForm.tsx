@@ -23,7 +23,7 @@ export default function SettingsForm({ displayName, bio, seoTitle, seoDescriptio
       )}
 
       <div className="card">
-        <h2 className="font-semibold text-gray-900 mb-5">Profile info</h2>
+        <h2 className="font-semibold text-white mb-5">Profile info</h2>
         <div className="flex flex-col gap-4">
           <div className="field">
             <label htmlFor="displayName" className="label">Display name</label>

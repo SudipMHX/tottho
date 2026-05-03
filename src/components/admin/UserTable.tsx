@@ -68,10 +68,10 @@ export default function UserTable({ initialUsers, total, pages }: Props) {
       <div className="card p-0 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-gray-50 border-b border-gray-200">
+            <thead className="bg-gray-900 border-b border-gray-200">
               <tr>
                 {['Username', 'Email', 'Role', 'Status', 'Joined', 'Actions'].map((h) => (
-                  <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
                     {h}
                   </th>
                 ))}
@@ -85,9 +85,9 @@ export default function UserTable({ initialUsers, total, pages }: Props) {
                   </td>
                 </tr>
               ) : users.map((user) => (
-                <tr key={user._id} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-4 py-3 font-medium text-gray-900">@{user.username}</td>
-                  <td className="px-4 py-3 text-gray-500">{user.email}</td>
+                <tr key={user._id} className="hover:bg-gray-800 transition-colors border-b border-gray-700">
+                  <td className="px-4 py-3 font-medium text-white">@{user.username}</td>
+                  <td className="px-4 py-3 text-gray-400">{user.email}</td>
                   <td className="px-4 py-3">
                     <span className={`badge ${user.role === 'admin' ? 'badge-purple' : 'badge-gray'}`}>
                       {user.role}
