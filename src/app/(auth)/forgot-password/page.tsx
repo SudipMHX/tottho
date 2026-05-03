@@ -1,6 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FiMail, FiArrowLeft, FiLink } from 'react-icons/fi'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Reset Password',
+  description: 'Reset your Tottho account password.',
+  robots: { index: false, follow: false },
+}
 
 export default function ForgotPasswordPage() {
   return (

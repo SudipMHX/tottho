@@ -21,11 +21,27 @@ export const metadata: Metadata = {
   },
   description:
     'Create your free bio link page in seconds. Share all your links, social profiles, and content in one beautiful page.',
-  keywords: ['bio link', 'link in bio', 'linktree alternative', 'free bio link page'],
+  keywords: ['tottho', 'tottho.pro.bd', 'share url', 'link share', 'profile page', 'bio link', 'link in bio', 'linktree alternative', 'free bio link page', 'Bangladesh', 'page builder', 'digital presence', 'social media tools', ''],
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
   openGraph: {
     type: 'website',
     siteName: 'Tottho',
+    locale: 'en_US',
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Tottho — Your Free Bio Link Page' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@tottho',
+    images: ['/og-default.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 }
 

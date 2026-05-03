@@ -14,24 +14,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   await connectDB()
 
   const user = await User.findOne({ username, isBanned: false })
-  if (!user) return { title: 'Profile not found' }
+  if (!user) return { title: 'Profile not found', robots: { index: false, follow: false } }
 
   const profile = await Profile.findOne({ userId: user._id })
 
+  const title = profile?.seoTitle || profile?.displayName || username
+  const description =
+    profile?.seoDescription ||
+    profile?.bio ||
+    `Check out ${profile?.displayName || username}'s links on Tottho.`
+  const canonicalUrl = `/${username}`
+  const images = profile?.avatar ? [{ url: profile.avatar, alt: `${title}'s avatar` }] : [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Tottho profile' }]
+
   return {
-    title: profile?.seoTitle || `${profile?.displayName || username} | Tottho`,
-    description:
-      profile?.seoDescription ||
-      profile?.bio ||
-      `Check out ${profile?.displayName || username}'s links on Tottho.`,
+    title,
+    description,
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       type: 'profile',
-      title: profile?.seoTitle || profile?.displayName || username,
-      description: profile?.bio || '',
-      images: profile?.avatar ? [{ url: profile.avatar }] : [],
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: 'Tottho',
+      images,
     },
+    twitter: {
+      card: 'summary',
+      title,
+      description,
+      images: profile?.avatar ? [profile.avatar] : ['/og-default.png'],
+    },
+    robots: { index: true, follow: true },
   }
 }
+
 
 export default async function ProfilePage({ params }: Props) {
   const { username } = await params
