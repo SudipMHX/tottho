@@ -71,7 +71,7 @@ export async function addLink(formData: FormData) {
 
   const validated = LinkSchema.safeParse(raw)
   if (!validated.success) {
-    throw new Error(validated.error.errors[0].message)
+    throw new Error(validated.error.issues[0].message)
   }
 
   await connectDB()
@@ -90,7 +90,7 @@ export async function updateLink(linkId: string, data: { title?: string; url?: s
 
   const validated = LinkSchema.partial().safeParse(data)
   if (!validated.success) {
-    throw new Error(validated.error.errors[0].message)
+    throw new Error(validated.error.issues[0].message)
   }
 
   await connectDB()

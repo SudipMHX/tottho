@@ -6,10 +6,11 @@ import Analytics from '@/models/Analytics'
 import { FiUsers, FiLink, FiLayout, FiUserPlus } from 'react-icons/fi'
 import { MotionDiv } from '@/components/ui/MotionDiv'
 import type { Metadata } from 'next'
+import type { Variants } from 'framer-motion'
 
 export const metadata: Metadata = { title: 'Admin Overview' }
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -17,7 +18,7 @@ const containerVariants = {
   }
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 15 },
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
 }
