@@ -63,8 +63,9 @@ export default async function ProfilePage({ params }: Props) {
     .sort({ order: 1 })
     .lean()
 
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://tottho.pro.bd';
+  
   // Log view (fire and forget)
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
   fetch(`${baseUrl}/api/analytics`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -92,11 +93,29 @@ export default async function ProfilePage({ params }: Props) {
     order: l.order,
   }))
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    mainEntity: {
+      '@type': 'Person',
+      name: profile.displayName || username,
+      image: profile.avatar ? (profile.avatar.startsWith('http') ? profile.avatar : `${baseUrl}${profile.avatar}`) : `${baseUrl}/og-default.png`,
+      description: profile.bio || profile.seoDescription || `Check out ${profile.displayName || username}'s links on Tottho.`,
+      url: `${baseUrl}/${username}`,
+    },
+  }
+
   return (
-    <ProfileRenderer
-      profile={serializedProfile}
-      links={serializedLinks}
-      username={username}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProfileRenderer
+        profile={serializedProfile}
+        links={serializedLinks}
+        username={username}
+      />
+    </>
   )
 }

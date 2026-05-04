@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { logout } from '@/app/actions/auth'
 import {
   FiLink, FiLayout, FiSettings, FiBarChart2, FiHome, FiLogOut, FiShield,
-  FiUsers, FiStar, FiFlag,
+  FiUsers, FiStar, FiFlag, FiServer
 } from 'react-icons/fi'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -19,10 +19,11 @@ const navLinks = [
 ]
 
 const adminLinks = [
-  { href: '/dashboard/admin',          label: 'Overview', icon: FiBarChart2 },
-  { href: '/dashboard/admin/users',    label: 'Users',    icon: FiUsers },
-  { href: '/dashboard/admin/showcase', label: 'Showcase', icon: FiStar },
-  { href: '/dashboard/admin/reports',  label: 'Reports',  icon: FiFlag },
+  { href: '/dashboard/admin',          label: 'Overview',    icon: FiBarChart2 },
+  { href: '/dashboard/admin/users',    label: 'Users',       icon: FiUsers },
+  { href: '/dashboard/admin/showcase', label: 'Showcase',    icon: FiStar },
+  { href: '/dashboard/admin/reports',  label: 'Reports',     icon: FiFlag },
+  { href: '/dashboard/admin/system',   label: 'System Logs', icon: FiServer },
 ]
 
 export { navLinks }

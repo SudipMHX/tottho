@@ -57,7 +57,7 @@ export default function SettingsForm({ displayName, bio, seoTitle, seoDescriptio
       </div>
 
       <div className="card">
-        <h2 className="font-semibold text-gray-900 mb-1">SEO settings</h2>
+        <h2 className="font-semibold text-white mb-1">SEO settings</h2>
         <p className="text-sm text-gray-400 mb-5">Customize how your profile appears in search results.</p>
         <div className="flex flex-col gap-4">
           <div className="field">

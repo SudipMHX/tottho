@@ -42,7 +42,7 @@ export default function AnalyticsChart({ viewsData, totalViews, totalClicks, top
       {/* Range toggle */}
       <div className="card">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-semibold text-gray-700">Profile Views</h3>
+          <h3 className="text-sm font-semibold text-white">Profile Views</h3>
           <div className="flex gap-2">
             {([7, 30] as const).map((n) => (
               <button
