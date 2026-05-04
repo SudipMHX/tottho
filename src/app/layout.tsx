@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
+import ServiceWorkerRegistry from '@/components/ServiceWorkerRegistry'
 import './globals.css'
 
 const inter = Inter({
@@ -14,6 +15,10 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: 'swap',
 })
 
+export const viewport = {
+  themeColor: '#030712',
+}
+
 export const metadata: Metadata = {
   title: {
     default: 'Tottho — Your Free Bio Link Page',
@@ -21,6 +26,12 @@ export const metadata: Metadata = {
   },
   description:
     'Create your free bio link page in seconds. Share all your links, social profiles, and content in one beautiful page.',
+  applicationName: 'Tottho',
+  appleWebApp: {
+    capable: true,
+    title: 'Tottho',
+    statusBarStyle: 'default',
+  },
   keywords: ['tottho', 'tottho.pro.bd', 'share url', 'link share', 'profile page', 'bio link', 'link in bio', 'linktree alternative', 'free bio link page', 'Bangladesh', 'page builder', 'digital presence', 'social media tools', ''],
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
   openGraph: {
@@ -48,7 +59,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`} style={{ colorScheme: 'dark' }} data-scroll-behavior="smooth">
-      <body>{children}</body>
+      <body>
+        <ServiceWorkerRegistry />
+        {children}
+      </body>
     </html>
   )
 }
