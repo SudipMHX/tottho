@@ -3,6 +3,8 @@ import connectDB from '@/lib/db'
 import User from '@/models/User'
 import Profile from '@/models/Profile'
 
+export const revalidate = 43200 // Revalidate and update the sitemap every 12 hours (43200 seconds)
+
 const BASE_URL =
   process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, '') || 'https://tottho.pro.bd'
 
