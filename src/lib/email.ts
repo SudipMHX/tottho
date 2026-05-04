@@ -24,40 +24,29 @@ function baseTemplate(content: string) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${APP_NAME}</title>
 </head>
-<body style="margin:0;padding:0;background:#0f1117;font-family:'Inter',system-ui,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0f1117;padding:40px 16px;">
+<body style="margin:0;padding:0;background:#030712;font-family:'Inter',system-ui,sans-serif;color:#f3f4f6;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#030712;padding:40px 16px;">
     <tr>
       <td align="center">
-        <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#161b26;border-radius:16px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#111827;border-radius:24px;border:1px solid rgba(255,255,255,0.05);overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);">
           <!-- Header -->
           <tr>
-            <td style="padding:32px 40px 24px;border-bottom:1px solid rgba(255,255,255,0.06);">
-              <table cellpadding="0" cellspacing="0">
-                <tr>
-                  <td>
-                    <div style="display:inline-flex;align-items:center;gap:10px;">
-                      <div style="width:36px;height:36px;background:#2545ed;border-radius:10px;display:flex;align-items:center;justify-content:center;">
-                        <span style="color:#fff;font-size:18px;font-weight:700;line-height:36px;display:block;text-align:center;">L</span>
-                      </div>
-                      <span style="font-size:18px;font-weight:700;color:#f9fafb;vertical-align:middle;">${APP_NAME}</span>
-                    </div>
-                  </td>
-                </tr>
-              </table>
+            <td style="padding:40px 40px 0;text-align:center;">
+              <img src="${APP_URL}/logo.png" alt="${APP_NAME}" width="64" height="64" style="display:block;margin:0 auto;border-radius:16px;" />
             </td>
           </tr>
           <!-- Body -->
           <tr>
-            <td style="padding:36px 40px;">
+            <td style="padding:32px 40px;">
               ${content}
             </td>
           </tr>
           <!-- Footer -->
           <tr>
-            <td style="padding:20px 40px 28px;border-top:1px solid rgba(255,255,255,0.06);">
-              <p style="margin:0;font-size:12px;color:#4b5563;text-align:center;">
-                You received this email because you signed up for ${APP_NAME}.<br/>
-                <a href="${APP_URL}" style="color:#6b7280;text-decoration:underline;">${APP_URL.replace('https://', '')}</a>
+            <td style="padding:24px 40px 32px;background:#0b0f19;border-top:1px solid rgba(255,255,255,0.05);">
+              <p style="margin:0;font-size:13px;color:#6b7280;text-align:center;line-height:1.6;">
+                Sent with ❤️ by <strong style="color:#9ca3af;">${APP_NAME}</strong><br/>
+                <a href="${APP_URL}" style="color:#FF5240;text-decoration:none;">${APP_URL.replace('https://', '')}</a>
               </p>
             </td>
           </tr>
@@ -74,24 +63,23 @@ export async function sendVerificationEmail(email: string, token: string) {
   const transporter = createTransport()
 
   const html = baseTemplate(`
-    <h1 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#f9fafb;">Verify your email</h1>
-    <p style="margin:0 0 28px;font-size:15px;color:#9ca3af;line-height:1.6;">
-      Click the button below to confirm your email address and activate your account.
-      This link expires in <strong style="color:#e5e7eb;">72 hours</strong>.
+    <h1 style="margin:0 0 16px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;letter-spacing:-0.5px;">Verify your email</h1>
+    <p style="margin:0 0 32px;font-size:16px;color:#9ca3af;line-height:1.6;text-align:center;">
+      You're almost there! Click the button below to activate your account and start building your bio link.
     </p>
-    <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
+    <table cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 32px;">
       <tr>
-        <td style="border-radius:10px;background:#2545ed;">
+        <td align="center">
           <a href="${verifyUrl}"
-             style="display:block;padding:14px 32px;font-size:15px;font-weight:600;color:#fff;text-decoration:none;border-radius:10px;">
+             style="display:inline-block;padding:16px 36px;font-size:16px;font-weight:600;color:#ffffff;text-decoration:none;background:#FF5240;border-radius:12px;box-shadow:0 4px 14px 0 rgba(255,82,64,0.39);">
             Verify Email Address
           </a>
         </td>
       </tr>
     </table>
-    <p style="margin:0 0 6px;font-size:13px;color:#6b7280;">Or copy this link into your browser:</p>
-    <p style="margin:0;font-size:12px;color:#4b5563;word-break:break-all;background:#0f1117;padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);">
-      ${verifyUrl}
+    <p style="margin:0 0 8px;font-size:14px;color:#6b7280;text-align:center;">Or copy and paste this link:</p>
+    <p style="margin:0;font-size:13px;color:#9ca3af;word-break:break-all;background:#030712;padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);text-align:center;">
+      <a href="${verifyUrl}" style="color:#60a5fa;text-decoration:none;">${verifyUrl}</a>
     </p>
   `)
 
@@ -108,20 +96,19 @@ export async function sendWelcomeEmail(email: string, username: string) {
   const transporter = createTransport()
 
   const html = baseTemplate(`
-    <h1 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#f9fafb;">Welcome to ${APP_NAME}! 🎉</h1>
-    <p style="margin:0 0 8px;font-size:15px;color:#9ca3af;line-height:1.6;">
-      Hey <strong style="color:#e5e7eb;">@${username}</strong>, your account is now verified.
+    <h1 style="margin:0 0 16px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;letter-spacing:-0.5px;">Welcome to ${APP_NAME}! 🎉</h1>
+    <p style="margin:0 0 16px;font-size:16px;color:#9ca3af;line-height:1.6;text-align:center;">
+      Hey <strong style="color:#ffffff;">@${username}</strong>, your account is verified and ready to go.
     </p>
-    <p style="margin:0 0 28px;font-size:15px;color:#9ca3af;line-height:1.6;">
-      Your public page is live at
-      <a href="${APP_URL}/${username}" style="color:#60a5fa;">${APP_URL.replace('https://', '')}/${username}</a>.
-      Head to your dashboard to add links and customize your theme.
+    <p style="margin:0 0 32px;font-size:16px;color:#9ca3af;line-height:1.6;text-align:center;">
+      Your public page is officially live at<br/>
+      <a href="${APP_URL}/${username}" style="color:#FF5240;text-decoration:none;font-weight:600;">${APP_URL.replace('https://', '')}/${username}</a>
     </p>
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" width="100%">
       <tr>
-        <td style="border-radius:10px;background:#2545ed;">
+        <td align="center">
           <a href="${dashboardUrl}"
-             style="display:block;padding:14px 32px;font-size:15px;font-weight:600;color:#fff;text-decoration:none;border-radius:10px;">
+             style="display:inline-block;padding:16px 36px;font-size:16px;font-weight:600;color:#ffffff;text-decoration:none;background:#FF5240;border-radius:12px;box-shadow:0 4px 14px 0 rgba(255,82,64,0.39);">
             Go to Dashboard
           </a>
         </td>
