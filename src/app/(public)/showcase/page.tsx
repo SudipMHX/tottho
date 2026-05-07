@@ -49,7 +49,7 @@ export default async function ShowcasePage() {
                     <div className="flex items-center gap-3 mb-3">
                       {profile.avatar ? (
                         <Image
-                          src={profile.avatar}
+                          src={`/images/${username}` || profile.avatar}
                           alt={profile.displayName || username}
                           width={48}
                           height={48}

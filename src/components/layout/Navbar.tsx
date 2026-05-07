@@ -18,7 +18,7 @@ export default async function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 font-display font-bold text-lg text-white shrink-0 hover:opacity-85 transition-opacity">
-            <Image src="/logo.png" alt="Logo" width={32} height={32} />
+            <Image src="/logo.png" alt="Logo" width={32} height={32} priority />
             <span>Tottho</span>
           </Link>
 

@@ -76,7 +76,7 @@ export default function ShowcaseGrid({ initialProfiles, initialTotal, initialPag
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ profileId, isShowcased: !current }),
     })
-    
+
     // Refresh quietly
     fetchProfiles(debouncedSearch, filter, page)
   }
@@ -129,8 +129,8 @@ export default function ShowcaseGrid({ initialProfiles, initialTotal, initialPag
         <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <AnimatePresence mode="popLayout">
             {profiles.map((profile) => (
-              <motion.div 
-                key={profile._id} 
+              <motion.div
+                key={profile._id}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -139,7 +139,7 @@ export default function ShowcaseGrid({ initialProfiles, initialTotal, initialPag
               >
                 {profile.avatar ? (
                   <Image
-                    src={profile.avatar}
+                    src={`/images/${profile.username}` || profile.avatar}
                     alt={profile.displayName || profile.username}
                     width={48}
                     height={48}
@@ -196,7 +196,7 @@ export default function ShowcaseGrid({ initialProfiles, initialTotal, initialPag
             >
               <FiChevronLeft size={16} />
             </button>
-            
+
             <div className="items-center gap-1 hidden sm:flex">
               {Array.from({ length: Math.min(5, pages) }, (_, i) => {
                 let p = i + 1;
@@ -204,16 +204,15 @@ export default function ShowcaseGrid({ initialProfiles, initialTotal, initialPag
                   if (page > 3) p = page - 3 + i;
                   if (p > pages) p = pages - 5 + i + 1;
                 }
-                
+
                 return (
                   <button
                     key={p}
                     onClick={() => { setPage(p); fetchProfiles(debouncedSearch, filter, p); }}
-                    className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${
-                      p === page 
-                        ? 'bg-white text-black' 
+                    className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${p === page
+                        ? 'bg-white text-black'
                         : 'bg-transparent text-gray-400 hover:bg-gray-800 hover:text-white'
-                    }`}
+                      }`}
                   >
                     {p}
                   </button>

@@ -12,9 +12,8 @@ export default function Header() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all">
       <div className="container-page mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Logo */}
         <Link href="/" className="text-xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
-          <Image src="/logo.png" alt="Logo" width={32} height={32} />
+          <Image src="/logo.png" alt="Logo" width={32} height={32} priority />
           <span>Tottho</span>
         </Link>
 

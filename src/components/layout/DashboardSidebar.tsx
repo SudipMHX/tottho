@@ -50,7 +50,7 @@ export default function DashboardSidebar({ username, role }: { username: string;
     >
       {/* Logo */}
       <Link href="/" className="flex items-center justify-center lg:justify-start gap-2 font-display font-bold shrink-0 hover:opacity-85 transition-opacity mb-8">
-        <Image src="/logo.png" alt="Logo" width={32} height={32} className="shrink-0" />
+        <Image src="/logo.png" alt="Logo" width={32} height={32} className="shrink-0" priority />
         <span className='hidden lg:inline text-white tracking-tight'>Tottho</span>
       </Link>
 

@@ -36,7 +36,7 @@ export default function InteractiveTheme({ profile, links, username }: ThemeProp
             {profile.avatar ? (
               <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.4)] shrink-0">
                 <Image
-                  src={profile.avatar}
+                  src={`/images/${username}` || profile.avatar}
                   alt={profile.displayName || username}
                   width={96}
                   height={96}
@@ -81,7 +81,7 @@ export default function InteractiveTheme({ profile, links, username }: ThemeProp
             className="flex flex-col gap-3"
           >
             {links.map((link) => (
-              <LinkButton key={link._id} link={link} username={username}  theme="interactive" />
+              <LinkButton key={link._id} link={link} username={username} theme="interactive" />
             ))}
           </motion.div>
 

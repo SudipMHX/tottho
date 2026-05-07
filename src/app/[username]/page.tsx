@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     profile?.bio ||
     `Check out ${profile?.displayName || username}'s links on Tottho.`
   const canonicalUrl = `/${username}`
-  const images = profile?.avatar ? [{ url: profile.avatar, alt: `${title}'s avatar` }] : [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Tottho profile' }]
+  const images = profile?.avatar ? [{ url: `/images/${username}` || profile.avatar, alt: `${title}'s avatar` }] : [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Tottho profile' }]
 
   return {
     title,
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary',
       title,
       description,
-      images: profile?.avatar ? [profile.avatar] : ['/og-default.png'],
+      images: profile?.avatar ? [`/images/${username}` || profile.avatar] : ['/og-default.png'],
     },
     robots: { index: true, follow: true },
   }
@@ -64,7 +64,7 @@ export default async function ProfilePage({ params }: Props) {
     .lean()
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://tottho.pro.bd';
-  
+
   // Log view (fire and forget)
   fetch(`${baseUrl}/api/analytics`, {
     method: 'POST',
@@ -76,7 +76,7 @@ export default async function ProfilePage({ params }: Props) {
     _id: String(profile._id),
     displayName: profile.displayName || '',
     bio: profile.bio || '',
-    avatar: profile.avatar || '',
+    avatar: `/images/${username}` || profile.avatar || '',
     theme: profile.theme || 'default',
     isShowcased: profile.isShowcased || false,
     seoTitle: profile.seoTitle || '',
@@ -99,7 +99,7 @@ export default async function ProfilePage({ params }: Props) {
     mainEntity: {
       '@type': 'Person',
       name: profile.displayName || username,
-      image: profile.avatar ? (profile.avatar.startsWith('http') ? profile.avatar : `${baseUrl}${profile.avatar}`) : `${baseUrl}/og-default.png`,
+      image: `${baseUrl}/images/${username}` || profile.avatar || `${baseUrl}/og-default.png`,
       description: profile.bio || profile.seoDescription || `Check out ${profile.displayName || username}'s links on Tottho.`,
       url: `${baseUrl}/${username}`,
     },

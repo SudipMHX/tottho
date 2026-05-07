@@ -21,7 +21,7 @@ export default function VineTheme({ profile, links, username }: ThemeProps) {
       },
     }),
   }
-  
+
   const glow = "0 0 10px rgba(45,255,190,0.4)"
 
   return (
@@ -37,7 +37,7 @@ export default function VineTheme({ profile, links, username }: ThemeProps) {
             {profile.avatar ? (
               <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-emerald-500/30 shadow-[0_0_20px_rgba(45,255,190,0.2)] shrink-0">
                 <Image
-                  src={profile.avatar}
+                  src={`/images/${username}` || profile.avatar}
                   alt={profile.displayName || username}
                   width={96}
                   height={96}
@@ -59,7 +59,7 @@ export default function VineTheme({ profile, links, username }: ThemeProps) {
             custom={1} variants={fadeUp} initial="hidden" animate="visible"
             className="text-center mb-2"
           >
-            <h1 
+            <h1
               className="text-3xl font-bold tracking-tight text-emerald-100"
               style={{ textShadow: glow }}
             >
@@ -85,7 +85,7 @@ export default function VineTheme({ profile, links, username }: ThemeProps) {
             className="flex flex-col gap-3"
           >
             {links.map((link) => (
-              <LinkButton key={link._id} link={link} username={username}  theme="vine" />
+              <LinkButton key={link._id} link={link} username={username} theme="vine" />
             ))}
           </motion.div>
 

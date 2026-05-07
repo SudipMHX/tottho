@@ -39,7 +39,7 @@ export default function GridLightTheme({ profile, links, username }: ThemeProps)
             {profile.avatar ? (
               <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-white shadow-[0_4px_20px_rgba(236,72,153,0.2)] shrink-0">
                 <Image
-                  src={profile.avatar}
+                  src={`/images/${username}` || profile.avatar}
                   alt={profile.displayName || username}
                   width={96}
                   height={96}
@@ -84,7 +84,7 @@ export default function GridLightTheme({ profile, links, username }: ThemeProps)
             className="flex flex-col gap-3"
           >
             {links.map((link) => (
-              <LinkButton key={link._id} link={link} username={username}  theme="gridLight" />
+              <LinkButton key={link._id} link={link} username={username} theme="gridLight" />
             ))}
           </motion.div>
 

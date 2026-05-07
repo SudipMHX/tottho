@@ -103,8 +103,8 @@ export default function GeometricTheme({ profile, links, username }: ThemeProps)
       {/* Content */}
       <div className="relative z-10 h-full w-full overflow-y-auto no-scrollbar flex flex-col py-16 px-4">
         <div className="w-full max-w-md mx-auto my-auto">
-        {/* Badge */}
-        {/* <motion.div
+          {/* Badge */}
+          {/* <motion.div
           custom={0}
           variants={fadeUpVariants}
           initial="hidden"
@@ -117,97 +117,97 @@ export default function GeometricTheme({ profile, links, username }: ThemeProps)
           </div>
         </motion.div> */}
 
-        {/* Avatar */}
-        <motion.div
-          custom={1}
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex justify-center mb-5 select-none pointer-events-none"
-        >
-          {profile.avatar ? (
-            <Image
-              src={profile.avatar}
-              alt={profile.displayName || username}
-              width={88}
-              height={88}
-              className="w-22 h-22 rounded-full object-cover ring-2 ring-white/20 shadow-[0_0_32px_rgba(99,102,241,0.3)]"
-            />
-          ) : (
-            <div
-              className="w-22 h-22 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-[0_0_32px_rgba(99,102,241,0.3)]"
-              style={{
-                width: 88,
-                height: 88,
-                background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%)',
-              }}
-            >
-              {(profile.displayName || username)[0]?.toUpperCase()}
-            </div>
-          )}
-        </motion.div>
-
-        {/* Name */}
-        <motion.div
-          custom={2}
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-center mb-2"
-        >
-          <h1
-            className="text-3xl font-bold tracking-tight"
-            style={{
-              background: 'linear-gradient(to bottom, #fff, rgba(255,255,255,0.8))',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            {profile.displayName || username}
-          </h1>
-        </motion.div>
-
-        {/* Bio */}
-        {profile.bio && (
+          {/* Avatar */}
           <motion.div
-            custom={3}
+            custom={1}
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="text-center mb-8"
+            className="flex justify-center mb-5 select-none pointer-events-none"
           >
-            <p className="text-white/40 text-sm leading-relaxed font-light tracking-wide max-w-xs mx-auto">
-              {profile.bio}
-            </p>
+            {profile.avatar ? (
+              <Image
+                src={`/images/${username}` || profile.avatar}
+                alt={profile.displayName || username}
+                width={88}
+                height={88}
+                className="w-22 h-22 rounded-full object-cover ring-2 ring-white/20 shadow-[0_0_32px_rgba(99,102,241,0.3)]"
+              />
+            ) : (
+              <div
+                className="w-22 h-22 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-[0_0_32px_rgba(99,102,241,0.3)]"
+                style={{
+                  width: 88,
+                  height: 88,
+                  background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%)',
+                }}
+              >
+                {(profile.displayName || username)[0]?.toUpperCase()}
+              </div>
+            )}
           </motion.div>
-        )}
 
-        {/* Links */}
-        <motion.div
-          custom={4}
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col gap-3"
-        >
-          {links.map((link) => (
-            <LinkButton key={link._id} link={link} username={username} theme="geometric" />
-          ))}
-        </motion.div>
+          {/* Name */}
+          <motion.div
+            custom={2}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-center mb-2"
+          >
+            <h1
+              className="text-3xl font-bold tracking-tight"
+              style={{
+                background: 'linear-gradient(to bottom, #fff, rgba(255,255,255,0.8))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              {profile.displayName || username}
+            </h1>
+          </motion.div>
 
-        {/* Branding */}
-        <motion.p
-          custom={5}
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-center text-xs text-white/20 mt-10"
-        >
-          Powered by{' '}
-          <Link href="/" className="text-white/40 hover:text-white/70 transition-colors">
-            Tottho
-          </Link>
-        </motion.p>
+          {/* Bio */}
+          {profile.bio && (
+            <motion.div
+              custom={3}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-center mb-8"
+            >
+              <p className="text-white/40 text-sm leading-relaxed font-light tracking-wide max-w-xs mx-auto">
+                {profile.bio}
+              </p>
+            </motion.div>
+          )}
+
+          {/* Links */}
+          <motion.div
+            custom={4}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col gap-3"
+          >
+            {links.map((link) => (
+              <LinkButton key={link._id} link={link} username={username} theme="geometric" />
+            ))}
+          </motion.div>
+
+          {/* Branding */}
+          <motion.p
+            custom={5}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-center text-xs text-white/20 mt-10"
+          >
+            Powered by{' '}
+            <Link href="/" className="text-white/40 hover:text-white/70 transition-colors">
+              Tottho
+            </Link>
+          </motion.p>
         </div>
       </div>
     </div>

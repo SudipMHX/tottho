@@ -24,7 +24,7 @@ export default function NeonTheme({ profile, links, username }: ThemeProps) {
         <div className="text-center mb-5 select-none pointer-events-none">
           {profile.avatar ? (
             <Image
-              src={profile.avatar}
+              src={`/images/${username}` || profile.avatar}
               alt={profile.displayName || username}
               width={96}
               height={96}

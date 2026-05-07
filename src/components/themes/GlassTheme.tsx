@@ -58,7 +58,7 @@ export default function GlassTheme({ profile, links, username }: ThemeProps) {
             <motion.div whileHover={{ scale: 1.05 }} className="inline-block relative">
               <div className="absolute inset-0 bg-white/30 rounded-full blur-xl -z-10" />
               <Image
-                src={profile.avatar}
+                src={`/images/${username}` || profile.avatar}
                 alt={profile.displayName || username}
                 width={96}
                 height={96}
@@ -86,7 +86,7 @@ export default function GlassTheme({ profile, links, username }: ThemeProps) {
         </motion.div>
 
         <motion.div className="flex flex-col gap-3">
-          {links.map((link,index) => (
+          {links.map((link, index) => (
             <LinkButton key={index} link={link} username={username} theme="glass" />
           ))}
         </motion.div>

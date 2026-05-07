@@ -72,7 +72,7 @@ export default function GooeyTheme({ profile, links, username }: ThemeProps) {
               {profile.avatar ? (
                 <div className="w-24 h-24 overflow-hidden rounded-[30%] ring-2 ring-violet-400/50 shadow-[0_0_40px_rgba(167,139,250,0.4)] shrink-0">
                   <Image
-                    src={profile.avatar}
+                    src={`/images/${username}` || profile.avatar}
                     alt={profile.displayName || username}
                     width={96}
                     height={96}

@@ -35,7 +35,7 @@ export default function MatrixTheme({ profile, links, username }: ThemeProps) {
           >
             {profile.avatar ? (
               <Image
-                src={profile.avatar}
+                src={`/images/${username}` || profile.avatar}
                 alt={profile.displayName || username}
                 width={96}
                 height={96}
@@ -78,7 +78,7 @@ export default function MatrixTheme({ profile, links, username }: ThemeProps) {
             className="flex flex-col gap-3"
           >
             {links.map((link) => (
-              <LinkButton key={link._id} link={link} username={username}  theme="matrix" />
+              <LinkButton key={link._id} link={link} username={username} theme="matrix" />
             ))}
           </motion.div>
 

@@ -51,7 +51,7 @@ export default function AuroraTheme({ profile, links, username }: ThemeProps) {
             {profile.avatar ? (
               <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-pink-400/40 shadow-[0_0_40px_rgba(209,0,209,0.45)] shrink-0">
                 <Image
-                  src={profile.avatar}
+                  src={`/images/${username}` || profile.avatar}
                   alt={profile.displayName || username}
                   width={96}
                   height={96}

@@ -44,7 +44,7 @@ export default function GrainTheme({ profile, links, username }: ThemeProps) {
             {profile.avatar ? (
               <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-orange-500/30 shadow-[0_0_30px_rgba(255,165,0,0.3)] shrink-0">
                 <Image
-                  src={profile.avatar}
+                  src={`/images/${username}` || profile.avatar}
                   alt={profile.displayName || username}
                   width={96}
                   height={96}

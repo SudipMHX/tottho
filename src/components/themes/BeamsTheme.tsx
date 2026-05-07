@@ -39,7 +39,7 @@ export default function BeamsTheme({ profile, links, username }: ThemeProps) {
             {profile.avatar ? (
               <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-cyan-400/30 shadow-[0_0_40px_rgba(34,211,238,0.2)] shrink-0">
                 <Image
-                  src={profile.avatar}
+                  src={`/images/${username}` || profile.avatar}
                   alt={profile.displayName || username}
                   width={96}
                   height={96}

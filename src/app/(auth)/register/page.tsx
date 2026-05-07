@@ -42,7 +42,7 @@ export default function RegisterPage() {
     <div className="card w-full max-w-md animate-fade-in">
       <div className="text-center mb-8">
         <Link href="/" className="flex justify-center items-center gap-2 font-display font-bold text-lg text-white shrink-0 hover:opacity-85 transition-opacity">
-          <Image src="/logo.png" alt="Logo" width={32} height={32} />
+          <Image src="/logo.png" alt="Logo" width={32} height={32} priority />
           <span>Tottho</span>
         </Link>
         <h1 className="text-2xl font-bold text-white mt-4">Create your page</h1>
