@@ -5,13 +5,9 @@ import { useEffect, useRef } from 'react'
 type InteractiveGradientBackgroundProps = {
   className?: string
   children?: React.ReactNode
-  /** 0..1.5 strength */
   intensity?: number
-  /** enable pointer interaction */
   interactive?: boolean
-  /** initial offset in px */
   initialOffset?: { x?: number; y?: number }
-  /** force dark mode look */
   dark?: boolean
 }
 
@@ -21,138 +17,128 @@ export default function InteractiveGradientBackground({
   intensity = 1,
   interactive = true,
   initialOffset,
-  dark = false,
+  dark = true,
 }: InteractiveGradientBackgroundProps) {
   const ref = useRef<HTMLDivElement>(null)
   const rafRef = useRef<number | null>(null)
-  const pendingRef = useRef<PointerEvent | Touch | null>(null)
+  const pendingRef = useRef<{ x: number; y: number } | null>(null)
 
-  const schedule = () => {
-    if (rafRef.current) return
-    rafRef.current = requestAnimationFrame(() => {
-      rafRef.current = null
-      const host = ref.current
-      const ev = pendingRef.current
-      if (!host || !ev) return
-      const rect = host.getBoundingClientRect()
-      const px = ('clientX' in ev ? ev.clientX : 0) - rect.left - rect.width / 2
-      const py = ('clientY' in ev ? ev.clientY : 0) - rect.top - rect.height / 2
+  const updatePosition = () => {
+    rafRef.current = null
 
-      const prefersReduced =
-        typeof window !== 'undefined' &&
-        window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    const host = ref.current
+    const pos = pendingRef.current
 
-      const k = prefersReduced ? 0.1 : intensity
+    if (!host || !pos) return
 
-      host.style.setProperty('--posX', String(px * k))
-      host.style.setProperty('--posY', String(py * k))
-    })
+    host.style.setProperty('--x', `${pos.x}px`)
+    host.style.setProperty('--y', `${pos.y}px`)
   }
 
   useEffect(() => {
     const host = ref.current
     if (!host) return
 
-    // set initial vars
-    host.style.setProperty('--posX', String(initialOffset?.x ?? 0))
-    host.style.setProperty('--posY', String(initialOffset?.y ?? 0))
+    host.style.setProperty('--x', `${initialOffset?.x ?? 0}px`)
+    host.style.setProperty('--y', `${initialOffset?.y ?? 0}px`)
 
     if (!interactive) return
 
-    const onPointer = (e: PointerEvent) => {
-      pendingRef.current = e
-      schedule()
-    }
-    const onTouch = (e: TouchEvent) => {
-      if (!e.touches.length) return
-      pendingRef.current = e.touches[0]
-      schedule()
-    }
-    const reset = () => {
-      host.style.setProperty('--posX', '0')
-      host.style.setProperty('--posY', '0')
+    const handleMove = (e: PointerEvent) => {
+      const rect = host.getBoundingClientRect()
+
+      const x = (e.clientX - rect.width / 2) * intensity
+      const y = (e.clientY - rect.height / 2) * intensity
+
+      pendingRef.current = {
+        x: x * 0.04,
+        y: y * 0.04,
+      }
+
+      if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(updatePosition)
+      }
     }
 
-    host.addEventListener('pointermove', onPointer, { passive: true })
-    host.addEventListener('touchmove', onTouch, { passive: true })
+    const reset = () => {
+      host.style.setProperty('--x', '0px')
+      host.style.setProperty('--y', '0px')
+    }
+
+    host.addEventListener('pointermove', handleMove, { passive: true })
     host.addEventListener('pointerleave', reset)
-    host.addEventListener('touchend', reset)
-    host.addEventListener('touchcancel', reset)
 
     return () => {
-      host.removeEventListener('pointermove', onPointer)
-      host.removeEventListener('touchmove', onTouch)
+      host.removeEventListener('pointermove', handleMove)
       host.removeEventListener('pointerleave', reset)
-      host.removeEventListener('touchend', reset)
-      host.removeEventListener('touchcancel', reset)
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
     }
-  }, [interactive, intensity, initialOffset?.x, initialOffset?.y])
+  }, [interactive, intensity, initialOffset])
 
   return (
     <div
       ref={ref}
-      aria-label="Interactive gradient background"
-      role="img"
       className={className}
-      style={{
-        position: 'relative',
-        width: '100%',
-        minHeight: '100vh',
-        overflow: 'hidden',
-        // CSS vars default
-        // @ts-ignore
-        '--posX': '0',
-        '--posY': '0',
-      }}
+      style={
+        {
+          '--x': '0px',
+          '--y': '0px',
+        } as React.CSSProperties
+      }
     >
-      {/* Light layer */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          opacity: dark ? 0 : 1,
-          transition: 'opacity 0.5s ease',
-          background: `
-            linear-gradient(115deg, rgb(211 255 215), rgb(0 0 0)),
-            radial-gradient(90% 100% at calc(50% + var(--posX)*1px) calc(0% + var(--posY)*1px), rgb(200 200 200), rgb(22 0 45)),
-            radial-gradient(100% 100% at calc(80% - var(--posX)*1px) calc(0% - var(--posY)*1px), rgb(250 255 0), rgb(36 0 0)),
-            radial-gradient(150% 210% at calc(100% + var(--posX)*1px) calc(0% + var(--posY)*1px), rgb(20 175 125), rgb(0 10 255)),
-            radial-gradient(100% 100% at calc(100% - var(--posX)*1px) calc(30% - var(--posY)*1px), rgb(255 77 0), rgb(0 200 255)),
-            linear-gradient(60deg, rgb(255 0 0), rgb(120 86 255))
-          `,
-          backgroundBlendMode:
-            'overlay, overlay, difference, difference, difference, normal',
-        }}
-      />
-      {/* Dark layer */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          opacity: dark ? 1 : 0,
-          transition: 'opacity 0.5s ease',
-          background: `
-            linear-gradient(115deg, rgb(15 30 20), rgb(0 0 0)),
-            radial-gradient(90% 100% at calc(50% + var(--posX)*1px) calc(0% + var(--posY)*1px), rgb(80 80 100), rgb(10 0 25)),
-            radial-gradient(100% 100% at calc(80% - var(--posX)*1px) calc(0% - var(--posY)*1px), rgb(100 120 0), rgb(15 0 0)),
-            radial-gradient(150% 210% at calc(100% + var(--posX)*1px) calc(0% + var(--posY)*1px), rgb(10 80 60), rgb(0 5 120)),
-            radial-gradient(100% 100% at calc(100% - var(--posX)*1px) calc(30% - var(--posY)*1px), rgb(120 35 0), rgb(0 100 140)),
-            linear-gradient(60deg, rgb(100 0 0), rgb(60 40 150))
-          `,
-          backgroundBlendMode:
-            'overlay, overlay, difference, difference, difference, normal',
-        }}
-      />
+      {/* Background */}
+      <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
+        {/* Base gradient */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: dark
+              ? `
+                radial-gradient(circle at 20% 20%, rgba(168,85,247,0.25), transparent 30%),
+                radial-gradient(circle at 80% 0%, rgba(59,130,246,0.25), transparent 35%),
+                radial-gradient(circle at 50% 100%, rgba(236,72,153,0.18), transparent 40%),
+                linear-gradient(to bottom right, #050505, #0f0f12)
+              `
+              : `
+                radial-gradient(circle at 20% 20%, rgba(168,85,247,0.18), transparent 30%),
+                radial-gradient(circle at 80% 0%, rgba(59,130,246,0.18), transparent 35%),
+                radial-gradient(circle at 50% 100%, rgba(236,72,153,0.14), transparent 40%),
+                linear-gradient(to bottom right, #ffffff, #f4f4f5)
+              `,
+          }}
+        />
+
+        {/* Interactive glow */}
+        <div
+          className="absolute inset-0 transition-transform duration-300 ease-out"
+          style={{
+            transform: 'translate3d(var(--x), var(--y), 0)',
+            background: `
+              radial-gradient(circle at center,
+              rgba(255,255,255,0.08),
+              transparent 45%)
+            `,
+            filter: 'blur(80px)',
+          }}
+        />
+
+        {/* Noise texture */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2760%27 height=%2760%27 viewBox=%270 0 60 60%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%23ffffff%27 fill-opacity=%271%27%3E%3Ccircle cx=%273%27 cy=%273%27 r=%271%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+          }}
+        />
+      </div>
 
       {/* Content */}
-      {children ? (
-        <div style={{ position: 'relative', zIndex: 1 }} className="h-full w-full">
-          {children}
-        </div>
-      ) : null}
+      <div className="relative z-10 min-h-dvh">
+        {children}
+      </div>
     </div>
   )
 }

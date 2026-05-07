@@ -29,6 +29,7 @@ export default function GlassTheme({ profile, links, username }: ThemeProps) {
       className="min-h-dvh py-12 px-4 relative overflow-hidden"
       style={{
         background: "url('/images/theme-bg-01.jpg') center/cover no-repeat",
+        backgroundAttachment: "fixed",
       }}
     >
       {/* Background blur orbs */}
@@ -85,8 +86,8 @@ export default function GlassTheme({ profile, links, username }: ThemeProps) {
         </motion.div>
 
         <motion.div className="flex flex-col gap-3">
-          {links.map((link) => (
-            <LinkButton link={link} username={username} theme="glass" />
+          {links.map((link,index) => (
+            <LinkButton key={index} link={link} username={username} theme="glass" />
           ))}
         </motion.div>
 

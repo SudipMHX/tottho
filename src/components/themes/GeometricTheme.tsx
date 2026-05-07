@@ -74,7 +74,7 @@ export default function GeometricTheme({ profile, links, username }: ThemeProps)
   }
 
   return (
-    <div className="relative min-h-dvh w-full flex items-center justify-center overflow-hidden bg-[#030303] py-16 px-4">
+    <div className="fixed inset-0 w-full overflow-hidden bg-[#030303]">
       {/* Ambient gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl pointer-events-none" />
 
@@ -101,7 +101,8 @@ export default function GeometricTheme({ profile, links, username }: ThemeProps)
       <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-[#030303]/80 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-md mx-auto">
+      <div className="relative z-10 h-full w-full overflow-y-auto no-scrollbar flex flex-col py-16 px-4">
+        <div className="w-full max-w-md mx-auto my-auto">
         {/* Badge */}
         {/* <motion.div
           custom={0}
@@ -190,7 +191,7 @@ export default function GeometricTheme({ profile, links, username }: ThemeProps)
           className="flex flex-col gap-3"
         >
           {links.map((link) => (
-            <LinkButton key={link._id} link={link} username={username}  theme="geometric" />
+            <LinkButton key={link._id} link={link} username={username} theme="geometric" />
           ))}
         </motion.div>
 
@@ -207,6 +208,7 @@ export default function GeometricTheme({ profile, links, username }: ThemeProps)
             Tottho
           </Link>
         </motion.p>
+        </div>
       </div>
     </div>
   )

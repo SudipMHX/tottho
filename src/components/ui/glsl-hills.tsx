@@ -163,7 +163,7 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
     // Three.js calls console.error() internally before throwing, so try/catch alone
     // is not enough — we must silence the log at the source.
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const noop = () => {}
+    const noop = () => { }
     const originalConsoleError = console.error
     console.error = noop
 
@@ -186,16 +186,16 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000)
     const clock = new THREE.Clock()
     const plane = new Plane()
-    
+
     let animationFrameId: number
 
     const resize = () => {
       if (!canvasRef.current || !containerRef.current) return
-      
+
       // Get the actual dimensions of the container
       const containerWidth = containerRef.current.clientWidth || window.innerWidth
       const containerHeight = containerRef.current.clientHeight || window.innerHeight
-      
+
       canvasRef.current.width = containerWidth
       canvasRef.current.height = containerHeight
       camera.aspect = containerWidth / containerHeight
@@ -230,23 +230,16 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
       if (animationFrameId) cancelAnimationFrame(animationFrameId)
       // Clean up Three.js resources
       plane.mesh.geometry.dispose()
-      ;(plane.mesh.material as THREE.Material).dispose()
+        ; (plane.mesh.material as THREE.Material).dispose()
       renderer.dispose()
     }
   }, [cameraZ, planeSize, speed])
 
   return (
-    <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none" style={{ position: 'absolute', width, height }}> 
+    <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none" style={{ position: 'absolute', width, height }}>
       <canvas
         ref={canvasRef}
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          zIndex: 1
-        }}
+        className='fixed -top-64 md:-top-40 left-0 right-0 bottom-0 z-1'
       />
     </div>
   )

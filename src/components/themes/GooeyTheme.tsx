@@ -24,15 +24,28 @@ export default function GooeyTheme({ profile, links, username }: ThemeProps) {
   }
 
   return (
-    <div className="relative min-h-dvh w-full flex items-center justify-center overflow-hidden py-16 px-4"
-      style={{ background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' }}
-    >
-      {/* Gooey SVG filter definition */}
-      <GooeyFilter id="gooey-profile-trail" strength={6} />
-
-      {/* Interactive pixel trail layer */}
+    <>
+      {/* ── Fixed background layer (never scrolls) ── */}
       <div
-        className="absolute inset-0 z-0"
+        className="fixed inset-0 z-0"
+        style={{ background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)' }}
+      >
+        {/* Gooey SVG filter definition */}
+        <GooeyFilter id="gooey-profile-trail" strength={6} />
+
+        {/* Radial vignette */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)',
+          }}
+        />
+      </div>
+
+      {/* ── Pixel trail — fixed overlay, receives all mouse events ── */}
+      <div
+        className="fixed inset-0 z-[5] pointer-events-auto"
         style={{ filter: 'url(#gooey-profile-trail)' }}
       >
         <PixelTrail
@@ -43,101 +56,97 @@ export default function GooeyTheme({ profile, links, username }: ThemeProps) {
         />
       </div>
 
-      {/* Radial vignette */}
-      <div
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%)',
-        }}
-      />
-
-      {/* Profile card — sits above the trail */}
-      <div className="relative z-10 w-full max-w-md mx-auto">
-        {/* Avatar */}
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="flex justify-center mb-5 select-none pointer-events-none"
-        >
-          {profile.avatar ? (
-            <div className="w-24 h-24 overflow-hidden rounded-[30%] ring-2 ring-violet-400/50 shadow-[0_0_40px_rgba(167,139,250,0.4)] shrink-0">
-              <Image
-                src={profile.avatar}
-                alt={profile.displayName || username}
-                width={96}
-                height={96}
-                draggable={false}
-                className="w-full h-full object-cover select-none pointer-events-none"
-              />
-            </div>
-          ) : (
-            <div
-              className="w-24 h-24 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-[0_0_40px_rgba(167,139,250,0.4)] shrink-0"
-              style={{ background: 'linear-gradient(135deg, #7c3aed, #db2777)' }}
+      {/* ── Scrollable content layer ── */}
+      <div className="fixed inset-0 z-10 overflow-y-auto no-scrollbar">
+        <div className="min-h-full w-full flex items-center justify-center py-16 px-4">
+          {/* Profile card */}
+          <div className="relative w-full max-w-md mx-auto">
+            {/* Avatar */}
+            <motion.div
+              custom={0}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="flex justify-center mb-5 select-none pointer-events-none"
             >
-              {(profile.displayName || username)[0]?.toUpperCase()}
-            </div>
-          )}
-        </motion.div>
+              {profile.avatar ? (
+                <div className="w-24 h-24 overflow-hidden rounded-[30%] ring-2 ring-violet-400/50 shadow-[0_0_40px_rgba(167,139,250,0.4)] shrink-0">
+                  <Image
+                    src={profile.avatar}
+                    alt={profile.displayName || username}
+                    width={96}
+                    height={96}
+                    draggable={false}
+                    className="w-full h-full object-cover select-none pointer-events-none"
+                  />
+                </div>
+              ) : (
+                <div
+                  className="w-24 h-24 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-[0_0_40px_rgba(167,139,250,0.4)] shrink-0"
+                  style={{ background: 'linear-gradient(135deg, #7c3aed, #db2777)' }}
+                >
+                  {(profile.displayName || username)[0]?.toUpperCase()}
+                </div>
+              )}
+            </motion.div>
 
-        {/* Name */}
-        <motion.div
-          custom={1}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="text-center mb-2"
-        >
-          <h1 className="text-3xl font-bold text-white tracking-tight drop-shadow-lg">
-            {profile.displayName || username}
-          </h1>
-        </motion.div>
+            {/* Name */}
+            <motion.div
+              custom={1}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="text-center mb-2"
+            >
+              <h1 className="text-3xl font-bold text-white tracking-tight drop-shadow-lg">
+                {profile.displayName || username}
+              </h1>
+            </motion.div>
 
-        {/* Bio */}
-        {profile.bio && (
-          <motion.div
-            custom={2}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            className="text-center mb-8"
-          >
-            <p className="text-white/50 text-sm leading-relaxed max-w-xs mx-auto">
-              {profile.bio}
-            </p>
-          </motion.div>
-        )}
+            {/* Bio */}
+            {profile.bio && (
+              <motion.div
+                custom={2}
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                className="text-center mb-8"
+              >
+                <p className="text-white/50 text-sm leading-relaxed max-w-xs mx-auto">
+                  {profile.bio}
+                </p>
+              </motion.div>
+            )}
 
-        {/* Links */}
-        <motion.div
-          custom={3}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col gap-3"
-        >
-          {links.map((link) => (
-            <LinkButton key={link._id} link={link} username={username}  theme="gooey" />
-          ))}
-        </motion.div>
+            {/* Links */}
+            <motion.div
+              custom={3}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-col gap-3"
+            >
+              {links.map((link, index) => (
+                <LinkButton key={index} link={link} username={username} theme="gooey" />
+              ))}
+            </motion.div>
 
-        {/* Branding */}
-        <motion.p
-          custom={4}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="text-center text-xs text-white/20 mt-10"
-        >
-          Powered by{' '}
-          <Link href="/" className="text-white/40 hover:text-violet-300 transition-colors">
-            Tottho
-          </Link>
-        </motion.p>
+            {/* Branding */}
+            <motion.p
+              custom={4}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="text-center text-xs text-white/20 mt-10"
+            >
+              Powered by{' '}
+              <Link href="/" className="text-white/40 hover:text-violet-300 transition-colors">
+                Tottho
+              </Link>
+            </motion.p>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }

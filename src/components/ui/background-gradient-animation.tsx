@@ -94,7 +94,7 @@ export function BackgroundGradientAnimation({
     <div
       ref={containerRef}
       className={classNames(
-        'relative overflow-hidden bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]',
+        'fixed inset-0 overflow-hidden bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]',
         containerClassName,
       )}
     >

@@ -26,8 +26,8 @@ export default function StarsTheme({ profile, links, username }: ThemeProps) {
   return (
     <StarsBackground className="min-h-dvh w-full text-white">
       {/* Profile content */}
-      <div className="relative z-10 min-h-dvh flex items-center justify-center py-16 px-4">
-        <div className="w-full max-w-md mx-auto">
+      <div className="min-h-full flex flex-col py-16 px-4">
+        <div className="w-full max-w-md mx-auto my-auto">
           {/* Avatar */}
           <motion.div
             custom={0} variants={fadeUp} initial="hidden" animate="visible"

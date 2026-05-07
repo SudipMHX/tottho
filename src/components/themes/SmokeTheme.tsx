@@ -28,7 +28,7 @@ export default function SmokeTheme({ profile, links, username }: ThemeProps) {
 
   return (
     // Full-page WebGL smoke canvas
-    <div className="relative min-h-dvh w-full overflow-hidden bg-[#141414]">
+    <div className="fixed inset-0 min-h-dvh w-full overflow-hidden bg-[#141414]">
       <div className="absolute inset-0">
         <SmokeBackground smokeColor={SMOKE_COLOR} className="w-full h-full block" />
       </div>
@@ -43,7 +43,7 @@ export default function SmokeTheme({ profile, links, username }: ThemeProps) {
       />
 
       {/* Profile content */}
-      <div className="relative z-10 min-h-dvh flex items-center justify-center py-16 px-4">
+      <div className="relative z-10 h-full w-full overflow-y-auto no-scrollbar flex items-center justify-center py-16 px-4">
         <div className="w-full max-w-md mx-auto">
 
           {/* Avatar */}

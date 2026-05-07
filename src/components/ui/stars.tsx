@@ -109,7 +109,7 @@ export function StarsBackground({
     <div
       data-slot="stars-background"
       className={cn(
-        "relative size-full overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_#262626_0%,_#000_100%)]",
+        "fixed inset-0 z-0 overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_#262626_0%,_#000_100%)]",
         className,
       )}
       onMouseMove={handleMouseMove}
@@ -143,7 +143,7 @@ export function StarsBackground({
           starColor={starColor}
         />
       </motion.div>
-      <div className="relative z-10 size-full">{children}</div>
+      <div className="relative z-10 h-full w-full overflow-y-auto no-scrollbar">{children}</div>
     </div>
   );
 }

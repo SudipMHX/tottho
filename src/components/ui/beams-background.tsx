@@ -126,7 +126,7 @@ export function BeamsBackground({
   }, [intensity])
 
   return (
-    <div className={cn('relative min-h-dvh w-full overflow-hidden bg-neutral-950', className)}>
+    <div className={cn('fixed inset-0 min-h-dvh w-full overflow-hidden bg-neutral-950', className)}>
       {/* Animated beam canvas */}
       <canvas ref={canvasRef} className="absolute inset-0" style={{ filter: 'blur(15px)' }} />
 
@@ -139,7 +139,7 @@ export function BeamsBackground({
       />
 
       {/* Content slot */}
-      <div className="relative z-10">
+      <div className="relative z-10 h-full w-full overflow-y-auto no-scrollbar">
         {children}
       </div>
     </div>

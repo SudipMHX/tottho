@@ -186,7 +186,7 @@ const RainingLetters: React.FC<RainingLettersProps> = ({ children }) => {
   return (
     <div className="relative w-full min-h-screen bg-black overflow-hidden flex flex-col">
       {/* Background Raining Characters */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         {characters.map((char, index) => (
           <span
             key={index}

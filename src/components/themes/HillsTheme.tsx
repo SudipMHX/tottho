@@ -45,7 +45,7 @@ export default function HillsTheme({ profile, links, username }: ThemeProps) {
                 alt={profile.displayName || username}
                 width={96}
                 height={96}
-                className="rounded-full object-cover ring-2 ring-gray-600 shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
+                className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover ring-2 ring-gray-600 shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
               />
             ) : (
               <div

@@ -6,12 +6,11 @@ import Link from 'next/link'
 export default function NeonTheme({ profile, links, username }: ThemeProps) {
   return (
     <div
-      className="min-h-dvh py-12 px-4 relative"
-      style={{ background: '#050505' }}
+      className="min-h-dvh py-12 px-4 relative bg-[#050505]"
     >
       {/* Neon grid background */}
       <div
-        className="absolute inset-0 opacity-20"
+        className="fixed inset-0 opacity-20"
         style={{
           backgroundImage: `
             linear-gradient(rgb(59 99 247 / 0.3) 1px, transparent 1px),

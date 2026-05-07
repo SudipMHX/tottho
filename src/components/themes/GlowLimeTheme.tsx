@@ -23,13 +23,13 @@ export default function GlowLimeTheme({ profile, links, username }: ThemeProps) 
   }
 
   return (
-    <div className="relative min-h-dvh w-full bg-[#020617] overflow-hidden text-white">
+    <div className="fixed inset-0 w-full overflow-hidden bg-[#020617]">
       {/* Background Component */}
       <LimeRadialGlow />
 
       {/* Profile content */}
-      <div className="relative z-10 min-h-dvh flex items-center justify-center py-16 px-4">
-        <div className="w-full max-w-md mx-auto">
+      <div className="relative z-10 h-full w-full overflow-y-auto no-scrollbar flex flex-col py-16 px-4">
+        <div className="w-full max-w-md mx-auto my-auto">
           {/* Avatar */}
           <motion.div
             custom={0} variants={fadeUp} initial="hidden" animate="visible"

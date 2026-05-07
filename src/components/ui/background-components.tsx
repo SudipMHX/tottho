@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
  */
 export function YellowGlowBackground({ className }: { className?: string }) {
   return (
-    <div className={cn('absolute inset-0 z-0', className)}>
+    <div className={cn('fixed inset-0 z-0', className)}>
       <div
         className="absolute inset-0"
         style={{
@@ -24,7 +24,7 @@ export function YellowGlowBackground({ className }: { className?: string }) {
 export function PaperTextureBackground({ className }: { className?: string }) {
   return (
     <div
-      className={cn('absolute inset-0 z-0', className)}
+      className={cn('fixed inset-0 z-0', className)}
       style={{
         backgroundImage: `
           radial-gradient(circle at 1px 1px, rgba(0,0,0,0.08) 1px, transparent 0),

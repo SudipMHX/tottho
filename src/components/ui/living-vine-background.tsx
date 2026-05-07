@@ -131,7 +131,7 @@ const LivingVineBackground = ({
       className={`relative min-h-screen w-full overflow-hidden bg-black ${className}`}
       style={{ backgroundColor: '#00050a' }}
     >
-      <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full z-0" />
+      <canvas ref={canvasRef} className="fixed inset-0 block h-full w-full z-0" />
       <div className="relative z-10 h-full w-full">{children}</div>
     </div>
   )

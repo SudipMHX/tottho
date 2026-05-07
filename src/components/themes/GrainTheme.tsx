@@ -32,74 +32,87 @@ export default function GrainTheme({ profile, links, username }: ThemeProps) {
       <div className="absolute inset-0 -z-10 bg-black/20" />
 
       {/* Content wrapper */}
-      <div className="relative z-10 w-full max-w-md mx-auto py-16 px-4 min-h-dvh flex flex-col justify-center">
-        {/* Avatar */}
-        <motion.div
-          custom={0} variants={fadeUp} initial="hidden" animate="visible"
-          className="flex justify-center mb-5 select-none pointer-events-none"
-        >
-          {profile.avatar ? (
-            <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-orange-500/30 shadow-[0_0_30px_rgba(255,165,0,0.3)] shrink-0">
-              <Image
-                src={profile.avatar}
-                alt={profile.displayName || username}
-                width={96}
-                height={96}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ) : (
-            <div
-              className="w-24 h-24 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-[0_0_30px_rgba(255,165,0,0.3)] ring-2 ring-orange-500/30 shrink-0"
-              style={{ background: 'linear-gradient(135deg, hsl(14, 100%, 57%), hsl(340, 82%, 52%))' }}
-            >
-              {(profile.displayName || username)[0]?.toUpperCase()}
-            </div>
-          )}
-        </motion.div>
 
-        {/* Name */}
-        <motion.div
-          custom={1} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-center mb-2"
-        >
-          <h1 className="text-4xl font-bold text-white tracking-tight drop-shadow-md">
-            {profile.displayName || username}
-          </h1>
-        </motion.div>
+      <div className="h-full w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-4 items-center md:content-center">
 
-        {/* Bio */}
-        {profile.bio && (
+        <div className='text-center md:text-left px-0 md:px-6'>
+          {/* Avatar */}
           <motion.div
-            custom={2} variants={fadeUp} initial="hidden" animate="visible"
-            className="text-center mb-8"
+            custom={0} variants={fadeUp} initial="hidden" animate="visible"
+            className="flex justify-center md:justify-start pt-10 md:pt-0 mb-5 select-none pointer-events-none"
           >
-            <p className="text-white/70 text-sm leading-relaxed max-w-xs mx-auto drop-shadow-sm">
-              {profile.bio}
-            </p>
+            {profile.avatar ? (
+              <div className="w-24 h-24 rounded-full overflow-hidden ring-2 ring-orange-500/30 shadow-[0_0_30px_rgba(255,165,0,0.3)] shrink-0">
+                <Image
+                  src={profile.avatar}
+                  alt={profile.displayName || username}
+                  width={96}
+                  height={96}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ) : (
+              <div
+                className="w-24 h-24 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-[0_0_30px_rgba(255,165,0,0.3)] ring-2 ring-orange-500/30 shrink-0"
+                style={{ background: 'linear-gradient(135deg, hsl(14, 100%, 57%), hsl(340, 82%, 52%))' }}
+              >
+                {(profile.displayName || username)[0]?.toUpperCase()}
+              </div>
+            )}
           </motion.div>
-        )}
+
+          {/* Name */}
+          <motion.div
+            custom={1} variants={fadeUp} initial="hidden" animate="visible"
+            className="mb-2"
+          >
+            <h1 className="text-3xl font-bold text-white tracking-tight drop-shadow-[0_2px_16px_rgba(209,0,209,0.6)]">
+              {profile.displayName || username}
+            </h1>
+          </motion.div>
+
+          {/* Bio */}
+          {profile.bio && (
+            <motion.div
+              custom={2} variants={fadeUp} initial="hidden" animate="visible"
+            >
+              <p className="text-white/60 text-sm leading-relaxed max-w-xs mx-auto md:mx-0 text-center md:text-left">
+                {profile.bio}
+              </p>
+            </motion.div>
+          )}
+        </div>
 
         {/* Links */}
         <motion.div
-          custom={3} variants={fadeUp} initial="hidden" animate="visible"
-          className="flex flex-col gap-3"
+          custom={3}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-3 md:gap-4 md:max-h-[70vh] md:overflow-y-auto p-4 md:rounded-md"
         >
           {links.map((link) => (
-            <LinkButton key={link._id} link={link} username={username}  theme="grain" />
+            <LinkButton key={link._id} link={link} username={username} theme="grain" />
           ))}
         </motion.div>
 
         {/* Branding */}
         <motion.p
-          custom={4} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-center text-xs text-white/40 mt-10"
+          custom={4}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="md:col-span-2 text-center text-xs text-white/50 md:mt-4 pb-6 md:pb-0"
         >
-          Powered by{' '}
-          <Link href="/" className="text-white/60 hover:text-orange-300 transition-colors">
+          Powered by{" "}
+          <Link
+            href="/"
+            className="text-white hover:text-amber-600 transition-colors"
+          >
             Tottho
           </Link>
         </motion.p>
+
       </div>
     </div>
   )
