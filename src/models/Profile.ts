@@ -5,7 +5,7 @@ export interface IProfile extends Document {
   displayName: string
   bio: string
   avatar: string
-  theme: 'default' | 'dark' | 'gradient' | 'glass' | 'neon' | 'geometric' | 'gooey' | 'beams' | 'smoke' | 'aurora' | 'paper' | 'grain' | 'grid-light' | 'grid-dark' | 'confetti' | 'glow-dark' | 'glow-lime' | 'interactive' | 'stars' | 'hills' | 'vine' | 'matrix'
+  theme: 'default' | 'dark' | 'gradient' | 'glass' | 'neon' | 'geometric' | 'gooey' | 'beams' | 'smoke' | 'aurora' | 'paper' | 'grain' | 'grid-light' | 'grid-dark' | 'confetti' | 'glow-dark' | 'glow-lime' | 'interactive' | 'stars' | 'hills' | 'vine' | 'matrix' | 'portfolio'
   isShowcased: boolean
   seoTitle: string
   seoDescription: string
@@ -21,7 +21,7 @@ const ProfileSchema = new Schema<IProfile>(
     avatar: { type: String, default: '' },
     theme: {
       type: String,
-      enum: ['default', 'dark', 'gradient', 'glass', 'neon', 'geometric', 'gooey', 'beams', 'smoke', 'aurora', 'paper', 'grain', 'grid-light', 'grid-dark', 'confetti', 'glow-dark', 'glow-lime', 'interactive', 'stars', 'hills', 'vine', 'matrix'],
+      enum: ['default', 'dark', 'gradient', 'glass', 'neon', 'geometric', 'gooey', 'beams', 'smoke', 'aurora', 'paper', 'grain', 'grid-light', 'grid-dark', 'confetti', 'glow-dark', 'glow-lime', 'interactive', 'stars', 'hills', 'vine', 'matrix', 'portfolio'],
       default: 'default',
     },
     isShowcased: { type: Boolean, default: false },

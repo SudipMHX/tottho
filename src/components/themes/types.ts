@@ -4,7 +4,7 @@ export type SerializedProfile = {
   displayName: string
   bio: string
   avatar: string
-  theme: 'default' | 'dark' | 'gradient' | 'glass' | 'neon' | 'geometric' | 'gooey' | 'beams' | 'smoke' | 'aurora' | 'paper' | 'grain' | 'grid-light' | 'grid-dark' | 'confetti' | 'glow-dark' | 'glow-lime' | 'interactive' | 'stars' | 'hills' | 'vine' | 'matrix'
+  theme: 'default' | 'dark' | 'gradient' | 'glass' | 'neon' | 'geometric' | 'gooey' | 'beams' | 'smoke' | 'aurora' | 'paper' | 'grain' | 'grid-light' | 'grid-dark' | 'confetti' | 'glow-dark' | 'glow-lime' | 'interactive' | 'stars' | 'hills' | 'vine' | 'matrix' | 'portfolio'
   isShowcased: boolean
   seoTitle: string
   seoDescription: string

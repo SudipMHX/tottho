@@ -36,7 +36,7 @@ export async function updateTheme(theme: string) {
   const session = await getSession()
   if (!session) throw new Error('Unauthorized')
 
-  const validThemes = ['default', 'dark', 'gradient', 'glass', 'neon', 'geometric', 'gooey', 'beams', 'smoke', 'aurora', 'paper', 'grain', 'grid-light', 'grid-dark', 'confetti', 'glow-dark', 'glow-lime', 'interactive', 'stars', 'hills', 'vine', 'matrix']
+  const validThemes = ['default', 'dark', 'gradient', 'glass', 'neon', 'geometric', 'gooey', 'beams', 'smoke', 'aurora', 'paper', 'grain', 'grid-light', 'grid-dark', 'confetti', 'glow-dark', 'glow-lime', 'interactive', 'stars', 'hills', 'vine', 'matrix', 'portfolio']
   if (!validThemes.includes(theme)) throw new Error('Invalid theme')
 
   await connectDB()

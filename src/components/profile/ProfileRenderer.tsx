@@ -20,6 +20,7 @@ import StarsTheme from '../themes/StarsTheme'
 import HillsTheme from '../themes/HillsTheme'
 import VineTheme from '../themes/VineTheme'
 import MatrixTheme from '../themes/MatrixTheme'
+import PortfolioTheme from '../themes/PortfolioTheme'
 import { ThemeProps } from '../themes/types'
 
 type Props = ThemeProps
@@ -51,6 +52,7 @@ export default function ProfileRenderer({ profile, links, username }: Props) {
     case 'hills':      return <HillsTheme {...themeProps} />
     case 'vine':       return <VineTheme {...themeProps} />
     case 'matrix':     return <MatrixTheme {...themeProps} />
+    case 'portfolio':  return <PortfolioTheme {...themeProps} />
     default:           return <DefaultTheme {...themeProps} />
   }
 }

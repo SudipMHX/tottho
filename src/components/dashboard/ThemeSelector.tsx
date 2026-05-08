@@ -178,6 +178,14 @@ const THEMES = [
     previewStyle: { background: '#000' },
     description: 'Terminal letters',
   },
+  {
+    id: 'portfolio',
+    name: 'Portfolio Hero',
+    preview: 'border-[#C3E41D]/50',
+    accent: 'bg-[#C3E41D]/60',
+    previewStyle: { background: '#000' },
+    description: 'Animated hero with blur text',
+  },
 ]
 
 export default function ThemeSelector({ currentTheme }: { currentTheme: string }) {
