@@ -37,6 +37,7 @@ export default function MatrixTheme({ profile, links, username }: ThemeProps) {
               <Image
                 src={`/images/${username}` || profile.avatar}
                 alt={profile.displayName || username}
+                loading="eager"
                 width={96}
                 height={96}
                 className="rounded-none object-cover border-2 border-[#00ff00] shadow-[0_0_20px_rgba(0,255,0,0.4)] filter grayscale brightness-125 contrast-125"

@@ -129,6 +129,7 @@ export default function GeometricTheme({ profile, links, username }: ThemeProps)
               <Image
                 src={`/images/${username}` || profile.avatar}
                 alt={profile.displayName || username}
+                loading="eager"
                 width={88}
                 height={88}
                 className="w-22 h-22 rounded-full object-cover ring-2 ring-white/20 shadow-[0_0_32px_rgba(99,102,241,0.3)]"

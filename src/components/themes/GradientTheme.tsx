@@ -18,6 +18,7 @@ export default function GradientTheme({ profile, links, username }: ThemeProps) 
             <Image
               src={`/images/${username}` || profile.avatar}
               alt={profile.displayName || username}
+              loading="eager"
               width={96}
               height={96}
               className="w-24 h-24 rounded-full mx-auto mb-4 select-none pointer-events-none object-cover ring-4 ring-white/40 shadow-2xl"

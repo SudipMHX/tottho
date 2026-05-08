@@ -60,6 +60,7 @@ export default function GlassTheme({ profile, links, username }: ThemeProps) {
               <Image
                 src={`/images/${username}` || profile.avatar}
                 alt={profile.displayName || username}
+                loading="eager"
                 width={96}
                 height={96}
                 className="w-24 h-24 rounded-full mx-auto mb-4 object-cover select-none pointer-events-none ring-4 ring-white/20 shadow-xl"

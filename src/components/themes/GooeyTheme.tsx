@@ -74,6 +74,7 @@ export default function GooeyTheme({ profile, links, username }: ThemeProps) {
                   <Image
                     src={`/images/${username}` || profile.avatar}
                     alt={profile.displayName || username}
+                    loading="eager"
                     width={96}
                     height={96}
                     draggable={false}
