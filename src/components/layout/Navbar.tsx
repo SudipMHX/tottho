@@ -27,6 +27,9 @@ export default async function Navbar() {
             <Link href="/showcase" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">
               Showcase
             </Link>
+            <Link href="/theme" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">
+              Themes
+            </Link>
             <Link href="/about" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">
               About
             </Link>

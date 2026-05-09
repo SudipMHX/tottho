@@ -7,6 +7,7 @@ import { FiMenu, FiX, FiLayout, FiLogIn, FiUserPlus, FiBookOpen, FiInfo } from '
 
 const navLinks = [
   { href: '/showcase', label: 'Showcase', icon: FiBookOpen },
+  { href: '/theme', label: 'Themes', icon: FiLayout },
   { href: '/about',    label: 'About',    icon: FiInfo },
 ]
 
@@ -32,14 +33,6 @@ export default function NavbarMobileMenu({ isLoggedIn }: { isLoggedIn: boolean }
         {open ? <FiX size={20} /> : <FiMenu size={20} />}
       </button>
 
-      {/* Backdrop */}
-      {open && (
-        <div
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
-          onClick={() => setOpen(false)}
-          aria-hidden="true"
-        />
-      )}
 
       {/* Slide-down drawer */}
       <div
