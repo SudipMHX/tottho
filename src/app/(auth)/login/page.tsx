@@ -4,7 +4,7 @@ import { useActionState, Suspense } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { login } from '@/app/actions/auth'
-import { FiLink, FiMail, FiLock, FiLoader } from 'react-icons/fi'
+import { FiMail, FiLock, FiLoader } from 'react-icons/fi'
 import { FaGithub, FaGoogle } from 'react-icons/fa'
 import Image from 'next/image'
 
@@ -37,14 +37,14 @@ function LoginForm() {
 
       {/* OAuth buttons */}
       <div className="flex flex-col gap-2 mb-5">
-        <a href="/api/auth/github" className="btn btn-secondary w-full text-sm">
+        <Link href="/api/auth/github" className="btn btn-secondary w-full text-sm">
           <FaGithub className="text-lg" />
           Continue with GitHub
-        </a>
-        <a href="/api/auth/google" className="btn btn-secondary w-full text-sm">
+        </Link>
+        <Link href="/api/auth/google" className="btn btn-secondary w-full text-sm">
           <FaGoogle className="text-base text-[#ea4335]" />
           Continue with Google
-        </a>
+        </Link>
       </div>
 
       {/* Divider */}
@@ -100,7 +100,7 @@ function LoginForm() {
       </form>
 
       <p className="text-center text-sm text-gray-500 mt-6">
-        Don't have an account?{' '}
+        Don&apos;t have an account?{' '}
         <Link href="/register" className="font-semibold text-[#FF8C6A] hover:text-[#FFB499] hover:underline transition-colors">
           Sign up free
         </Link>

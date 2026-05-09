@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import LinkButton from '@/components/profile/LinkButton'
 import { ThemeProps } from './types'
 import { motion, Variants } from 'framer-motion'
@@ -93,7 +94,7 @@ export default function GlassTheme({ profile, links, username }: ThemeProps) {
         </motion.div>
 
         <motion.p variants={fadeUpVariants} className="text-center text-xs text-white/40 mt-10">
-          Powered by <a href="/" className="font-semibold text-white/70 hover:text-white transition-colors">Tottho</a>
+          Powered by <Link href="/" className="font-semibold text-white/70 hover:text-white transition-colors">Tottho</Link>
         </motion.p>
       </motion.div>
     </div>

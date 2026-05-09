@@ -35,7 +35,6 @@ export default async function SettingsPage() {
 
       <AvatarUploader
         currentAvatar={profile?.avatar || ''}
-        displayName={profile?.displayName || session.username}
       />
 
       <SettingsForm

@@ -3,9 +3,9 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import ConfettiBackground from '@/components/ui/confetti-background'
-import { cn } from '@/lib/utils'
 import { ThemeProps } from './types'
 import LinkButton from '@/components/profile/LinkButton'
+import Link from 'next/link'
 
 /* ── Main theme ── */
 export default function ConfettiTheme({ profile, links, username }: ThemeProps) {
@@ -94,9 +94,9 @@ export default function ConfettiTheme({ profile, links, username }: ThemeProps) 
             className="text-center text-xs text-indigo-300/50 mt-10"
           >
             Powered by{' '}
-            <a href="/" className="text-indigo-300/80 hover:text-white transition-colors">
+            <Link href="/" className="text-indigo-300/80 hover:text-white transition-colors">
               Tottho
-            </a>
+            </Link>
           </motion.p>
         </div>
       </div>

@@ -4,8 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  FiLink, FiZap, FiPieChart, FiStar, FiArrowRight, FiCheck,
-  FiChevronDown, FiLayout, FiSmartphone, FiGlobe
+  FiLink, FiPieChart, FiStar, FiArrowRight, FiCheck,
+  FiChevronDown, FiLayout, FiGlobe
 } from 'react-icons/fi'
 import { FaTiktok, FaInstagram, FaYoutube, FaTwitch, FaXTwitter } from 'react-icons/fa6'
 
@@ -117,7 +117,7 @@ export default function HomeContent() {
         
         <div className="container-page">
           <motion.div {...fadeIn} className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Everything you need,<br/>nothing you don't.</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Everything you need,<br/>nothing you don&apos;t.</h2>
             <p className="text-gray-400 text-lg max-w-xl mx-auto">
               We stripped out all the bloat. Tottho gives you the premium features other platforms charge for, completely free.
             </p>
@@ -134,7 +134,7 @@ export default function HomeContent() {
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-3">Stunning Themes</h3>
                   <p className="text-gray-400 leading-relaxed max-w-md">
-                    Choose from beautifully crafted themes including Dark, Light, Glassmorphism, Neon, and many more. Match your brand's exact vibe with a single click.
+                    Choose from beautifully crafted themes including Dark, Light, Glassmorphism, Neon, and many more. Match your brand&apos;s exact vibe with a single click.
                   </p>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function HomeContent() {
               { step: '1', title: 'Claim your link', desc: 'Sign up and grab your unique username before someone else does.' },
               { step: '2', title: 'Add your content', desc: 'Drop in your social links, website, videos, or anything you want to share.' },
               { step: '3', title: 'Share with the world', desc: 'Add your new Tottho link to your TikTok, Instagram, or Twitter bio.' }
-            ].map((s, i) => (
+            ].map((s) => (
               <motion.div variants={item} key={s.step} className="relative z-10 text-center">
                 <div className="w-24 h-24 mx-auto bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center mb-6 shadow-xl relative group">
                   <div className="absolute inset-0 rounded-full bg-[#FF5240] opacity-0 group-hover:opacity-20 transition-opacity blur-xl" />
@@ -231,12 +231,12 @@ export default function HomeContent() {
             viewport={{ once: true }}
             className="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto"
           >
-            {testimonials.map(({ name, role, text }, i) => (
+            {testimonials.map(({ name, role, text }) => (
               <motion.div variants={item} key={name} className="p-8 rounded-3xl bg-gray-900/40 border border-gray-800/50 backdrop-blur-sm hover:bg-gray-900/80 transition-colors">
                 <div className="flex gap-1 text-amber-400 mb-6">
                   {[...Array(5)].map((_, i) => <FiStar key={i} className="fill-current" />)}
                 </div>
-                <p className="text-gray-300 leading-relaxed mb-8">"{text}"</p>
+                <p className="text-gray-300 leading-relaxed mb-8">&ldquo;{text}&rdquo;</p>
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#FF5240] to-purple-500 flex items-center justify-center text-white font-bold">
                     {name[0]}

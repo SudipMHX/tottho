@@ -150,7 +150,7 @@ export const RadialScrollGallery = forwardRef<
     // Measure the first child to determine layout buffers.
     // This ensures the container is tall enough to prevent clipping as items rotate.
     useEffect(() => {
-      setIsMounted(true);
+      setTimeout(() => setIsMounted(true), 0);
 
       if (!childRef.current) return;
 

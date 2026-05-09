@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { GradientBackground } from '@/components/ui/paper-design-shader-background'
-import { cn } from '@/lib/utils'
 import { ThemeProps } from './types'
 import LinkButton from '@/components/profile/LinkButton'
 import Link from 'next/link'

@@ -6,7 +6,9 @@ import { RadialScrollGallery } from "@/components/ui/portfolio-and-image-gallery
 import Image from "next/image";
 
 
-export default function RadialGallerySection({themePreview}: {themePreview: any[]}) {
+interface ThemeItem { id: number; title: string; cat: string; img: string; description?: string }
+
+export default function RadialGallerySection({themePreview}: {themePreview: ThemeItem[]}) {
   return (
     <section className="relative bg-[#050816] overflow-hidden" id="explore">
       {/* Background glows */}

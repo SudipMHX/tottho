@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 import connectDB from '@/lib/db'
 import User from '@/models/User'
 import Profile from '@/models/Profile'
@@ -75,7 +74,7 @@ export async function GET(request: NextRequest) {
 
     if (!user) {
       // Generate unique username
-      let baseUsername = generateUsername(ghUser.login || displayName)
+      const baseUsername = generateUsername(ghUser.login || displayName)
       let username = baseUsername
       let counter = 1
       while (await User.findOne({ username })) {

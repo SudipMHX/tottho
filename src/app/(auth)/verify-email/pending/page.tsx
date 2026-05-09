@@ -1,9 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { logout, resendVerification } from '@/app/actions/auth'
-import { getSession } from '@/lib/session'
 import { FiMail, FiLoader, FiCheck, FiRefreshCw, FiLogOut } from 'react-icons/fi'
 
 export default function VerifyPendingPage() {
@@ -73,7 +71,7 @@ export default function VerifyPendingPage() {
       </button>
 
       <div className="text-xs text-gray-400 mb-6">
-        Check your spam folder if you don't see it within a few minutes.
+        Check your spam folder if you don&apos;t see it within a few minutes.
       </div>
 
       {/* Sign out */}

@@ -29,7 +29,8 @@ export default async function DashboardPage() {
   if (!session) redirect('/login')
 
   await connectDB()
-  const profile = await Profile.findOne({ userId: session.userId }).lean()
+  // Ensure profile exists or trigger logic if needed, otherwise just fetch counts
+  await Profile.findOne({ userId: session.userId }).lean()
   const linkCount = await Link2.countDocuments({ userId: session.userId })
   const activeLinks = await Link2.countDocuments({ userId: session.userId, isActive: true })
 
@@ -53,7 +54,7 @@ export default async function DashboardPage() {
           <h1 className="text-2xl font-bold text-[#f9fafb]">
             Hey, @{session.username} 👋
           </h1>
-          <p className="text-[#9ca3af] text-sm mt-1">Here's how your page is doing</p>
+          <p className="text-[#9ca3af] text-sm mt-1">Here&apos;s how your page is doing</p>
         </div>
         <Link
           href={`/${session.username}`}

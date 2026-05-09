@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect, useTransition } from 'react'
+import { useState, useTransition } from 'react'
+import React from 'react'
 import {
   DndContext,
   closestCenter,
@@ -38,12 +39,9 @@ export default function LinksManager({ initialLinks }: { initialLinks: Link[] })
   const [newTitle, setNewTitle] = useState('')
   const [newUrl, setNewUrl] = useState('')
   const [newIcon, setNewIcon] = useState('FaLink')
-  const [isPending, startTransition] = useTransition()
+  const [, startTransition] = useTransition()
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    setLinks(initialLinks)
-  }, [initialLinks])
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -75,12 +73,13 @@ export default function LinksManager({ initialLinks }: { initialLinks: Link[] })
       setNewUrl('')
       setNewIcon('FaLink')
       setShowAdd(false)
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
     }
   }
 
-  const NewIcon = getIcon(newIcon)
+  const newIconKey = newIcon
+  const NewIcon = getIcon(newIconKey)
 
   return (
     <div className="flex flex-col gap-4">
@@ -112,7 +111,7 @@ export default function LinksManager({ initialLinks }: { initialLinks: Link[] })
                 onClick={() => setShowIconPicker(!showIconPicker)}
                 className="btn btn-secondary gap-2"
               >
-                <span className="text-lg"><NewIcon /></span>
+                <span className="text-lg">{React.createElement(NewIcon)}</span>
                 Change icon
               </button>
             </div>

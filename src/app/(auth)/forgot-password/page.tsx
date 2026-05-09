@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { FiMail, FiArrowLeft, FiLink } from 'react-icons/fi'
+import { FiMail, FiArrowLeft } from 'react-icons/fi'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function ForgotPasswordPage() {
         </Link>
         <h1 className="text-2xl font-bold text-white mt-4">Reset password</h1>
         <p className="text-sm text-gray-500 mt-1">
-          Enter your email and we'll send you a reset link.
+          Enter your email and we&apos;ll send you a reset link.
         </p>
       </div>
 

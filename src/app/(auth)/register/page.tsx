@@ -3,7 +3,7 @@
 import { useActionState, useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { signup } from '@/app/actions/auth'
-import { FiLink, FiMail, FiLock, FiUser, FiLoader, FiCheck, FiX } from 'react-icons/fi'
+import { FiMail, FiLock, FiLoader, FiCheck, FiX } from 'react-icons/fi'
 import { FaGithub, FaGoogle } from 'react-icons/fa'
 import Image from 'next/image'
 
@@ -51,14 +51,14 @@ export default function RegisterPage() {
 
       {/* OAuth buttons */}
       <div className="flex flex-col gap-2 mb-5">
-        <a href="/api/auth/github" className="btn btn-secondary w-full text-sm">
+        <Link href="/api/auth/github" className="btn btn-secondary w-full text-sm">
           <FaGithub className="text-lg" />
           Continue with GitHub
-        </a>
-        <a href="/api/auth/google" className="btn btn-secondary w-full text-sm">
+        </Link>
+        <Link href="/api/auth/google" className="btn btn-secondary w-full text-sm">
           <FaGoogle className="text-base text-[#ea4335]" />
           Continue with Google
-        </a>
+        </Link>
       </div>
 
       {/* Divider */}
@@ -140,7 +140,7 @@ export default function RegisterPage() {
       </form>
 
       <p className="text-center text-xs text-gray-600 mt-4">
-        We'll send you a verification email to activate your account.
+        We&apos;ll send you a verification email to activate your account.
       </p>
       <p className="text-center text-xs text-gray-600 mt-2">
         By signing up, you agree to our{' '}

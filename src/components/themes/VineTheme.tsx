@@ -3,9 +3,9 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import LivingVineBackground from '@/components/ui/living-vine-background'
-import { cn } from '@/lib/utils'
 import { ThemeProps } from './types'
 import LinkButton from '@/components/profile/LinkButton'
+import Link from 'next/link'
 
 /* ── Main theme ── */
 export default function VineTheme({ profile, links, username }: ThemeProps) {
@@ -95,9 +95,9 @@ export default function VineTheme({ profile, links, username }: ThemeProps) {
             className="text-center text-xs text-emerald-200/30 mt-10"
           >
             Powered by{' '}
-            <a href="/" className="text-emerald-200/50 hover:text-emerald-400 transition-colors">
+            <Link href="/" className="text-emerald-200/50 hover:text-emerald-400 transition-colors">
               Tottho
-            </a>
+            </Link>
           </motion.p>
         </div>
       </div>

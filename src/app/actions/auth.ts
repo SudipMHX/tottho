@@ -8,7 +8,7 @@ import connectDB from '@/lib/db'
 import User from '@/models/User'
 import Profile from '@/models/Profile'
 import { createSession, deleteSession, getSession } from '@/lib/session'
-import { sendVerificationEmail, sendWelcomeEmail } from '@/lib/email'
+import { sendVerificationEmail } from '@/lib/email'
 import { SignupSchema, LoginSchema, FormState } from '@/lib/definitions'
 
 /* ── helpers ── */
@@ -133,6 +133,7 @@ export async function logout() {
 
 
 /* ── resendVerification ── */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function resendVerification(_?: string): Promise<{ success: boolean; message: string }> {
   const session = await getSession()
   if (!session) return { success: false, message: 'You must be logged in.' }

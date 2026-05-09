@@ -162,7 +162,6 @@ const GLSLHills = ({ width = '100vw', height = '100vh', cameraZ = 125, planeSize
     // don't surface in sandboxed environments (e.g. the dashboard preview iframe).
     // Three.js calls console.error() internally before throwing, so try/catch alone
     // is not enough — we must silence the log at the source.
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const noop = () => { }
     const originalConsoleError = console.error
     console.error = noop

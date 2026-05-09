@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import RainingLetters, { ScrambledTitle } from '@/components/ui/modern-animated-hero-section'
-import { cn } from '@/lib/utils'
 import { ThemeProps } from './types'
 import LinkButton from '@/components/profile/LinkButton'
 import Link from 'next/link'

@@ -40,8 +40,7 @@ export function PortfolioGallery({
   maxHeight = 120,
   spacing = "-space-x-72 md:-space-x-80",
   onImageClick,
-  pauseOnHover = true,
-  marqueeRepeat = 4,
+
 }: PortfolioGalleryProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 

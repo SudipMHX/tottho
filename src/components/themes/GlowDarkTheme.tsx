@@ -3,9 +3,9 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { DarkRadialGlow } from '@/components/ui/radial-glow-background'
-import { cn } from '@/lib/utils'
 import { ThemeProps } from './types'
 import LinkButton from '@/components/profile/LinkButton'
+import Link from 'next/link'
 
 /* ── Main theme ── */
 export default function GlowDarkTheme({ profile, links, username }: ThemeProps) {
@@ -94,9 +94,9 @@ export default function GlowDarkTheme({ profile, links, username }: ThemeProps) 
             className="text-center text-xs text-gray-600 mt-10"
           >
             Powered by{' '}
-            <a href="/" className="text-gray-500 hover:text-white transition-colors">
+            <Link href="/" className="text-gray-500 hover:text-white transition-colors">
               Tottho
-            </a>
+            </Link>
           </motion.p>
         </div>
       </div>

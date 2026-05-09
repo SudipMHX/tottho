@@ -1,7 +1,8 @@
 "use client";
 
+import React from "react";
 import { getIcon } from "@/lib/icons";
-import { motion } from "framer-motion";
+import { motion, type Target } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -61,7 +62,7 @@ export default function LinkButton({ link, username, theme }: Props) {
   // --- Theme Specific Configurations ---
 
   // 1. Framer Motion Animations
-  const hoverAnimations: Record<ThemeName, any> = {
+  const hoverAnimations: Record<ThemeName, Target> = {
     default: { scale: 1.02 },
     dark: { scale: 1.02 },
     gradient: { scale: 1.05 },
@@ -96,7 +97,7 @@ export default function LinkButton({ link, username, theme }: Props) {
     },
   };
 
-  const tapAnimations: Record<ThemeName, any> = {
+  const tapAnimations: Record<ThemeName, Target> = {
     default: { scale: 0.98 },
     dark: { scale: 0.98 },
     gradient: { scale: 0.95 },
@@ -197,7 +198,7 @@ export default function LinkButton({ link, username, theme }: Props) {
         )}
       >
         <span className={cn("text-lg shrink-0", iconClasses[theme] || "")}>
-          <Icon />
+          {React.createElement(Icon)}
         </span>
         <span className="flex-1 text-center">{link.title}</span>
       </motion.div>

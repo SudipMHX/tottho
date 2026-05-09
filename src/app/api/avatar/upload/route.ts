@@ -9,7 +9,6 @@ import sharp from 'sharp'
 
 const AVATARS_DIR = path.join(process.cwd(), 'public', 'avatars')
 const MAX_SIZE_KB = 500
-const TARGET_SIZE_KB = 300
 
 export async function POST(req: NextRequest) {
   try {
@@ -32,7 +31,7 @@ export async function POST(req: NextRequest) {
 
     // Read the file as a Buffer
     const arrayBuffer = await file.arrayBuffer()
-    let inputBuffer = Buffer.from(arrayBuffer)
+    const inputBuffer = Buffer.from(arrayBuffer)
     const originalSizeKB = inputBuffer.length / 1024
 
     let outputBuffer: Buffer

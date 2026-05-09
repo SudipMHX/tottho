@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { useState } from 'react'
-import { cn } from '@/lib/utils'
 import Image from 'next/image'
 
 export default function Header() {

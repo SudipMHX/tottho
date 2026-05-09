@@ -1,5 +1,4 @@
 import { redirect } from 'next/navigation'
-import { NextRequest } from 'next/server'
 import { randomUUID } from 'crypto'
 import { cookies } from 'next/headers'
 

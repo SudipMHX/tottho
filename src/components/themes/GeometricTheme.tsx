@@ -2,10 +2,9 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Circle } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import { ThemeProps } from './types'
 import LinkButton from '@/components/profile/LinkButton'
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 
 /* ── Floating pill shapes (from provided component) ── */

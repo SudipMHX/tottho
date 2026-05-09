@@ -119,7 +119,7 @@ export default function UserTable({ initialUsers, total: initialTotal, pages: in
               ) : users.length === 0 ? (
                 <tr>
                   <td colSpan={4} className="text-center py-16 text-gray-500">
-                    No users found matching "{search}"
+                    No users found matching &ldquo;{search}&rdquo;
                   </td>
                 </tr>
               ) : (

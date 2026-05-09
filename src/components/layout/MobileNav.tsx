@@ -30,7 +30,7 @@ export default function MobileNav({ username, role }: { username: string; role: 
   const [open, setOpen] = useState(false)
 
   // Close on navigation
-  useEffect(() => { setOpen(false) }, [pathname])
+  useEffect(() => { const t = setTimeout(() => setOpen(false), 0); return () => clearTimeout(t) }, [pathname])
 
   // Lock body scroll
   useEffect(() => {

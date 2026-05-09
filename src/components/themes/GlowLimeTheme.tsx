@@ -3,9 +3,9 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { LimeRadialGlow } from '@/components/ui/radial-glow-background'
-import { cn } from '@/lib/utils'
 import { ThemeProps } from './types'
 import LinkButton from '@/components/profile/LinkButton'
+import Link from 'next/link'
 
 /* ── Main theme ── */
 export default function GlowLimeTheme({ profile, links, username }: ThemeProps) {
@@ -94,9 +94,9 @@ export default function GlowLimeTheme({ profile, links, username }: ThemeProps) 
             className="text-center text-xs text-lime-100/30 mt-10"
           >
             Powered by{' '}
-            <a href="/" className="text-lime-100/50 hover:text-lime-400 transition-colors">
+            <Link href="/" className="text-lime-100/50 hover:text-lime-400 transition-colors">
               Tottho
-            </a>
+            </Link>
           </motion.p>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { getSession } from '@/lib/session'
-import { FiLink } from 'react-icons/fi'
 import NavbarMobileMenu from './NavbarMobileMenu'
 import Image from 'next/image'
 

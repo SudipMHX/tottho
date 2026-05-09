@@ -83,7 +83,8 @@ export default function SystemLogsDashboard() {
   }
 
   useEffect(() => {
-    fetchStats()
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    void fetchStats()
   }, [])
 
   useEffect(() => {

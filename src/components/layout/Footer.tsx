@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { FiLink } from 'react-icons/fi'
 
 export default function Footer() {
   const year = new Date().getFullYear()

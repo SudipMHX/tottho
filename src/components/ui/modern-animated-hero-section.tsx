@@ -60,7 +60,8 @@ export class TextScramble {
     let complete = 0
     
     for (let i = 0, n = this.queue.length; i < n; i++) {
-      let { from, to, start, end, char } = this.queue[i]
+      const { from, to, start, end } = this.queue[i]
+      let { char } = this.queue[i]
       if (this.frame >= end) {
         complete++
         output += to
@@ -142,7 +143,9 @@ const RainingLetters: React.FC<RainingLettersProps> = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    setCharacters(createCharacters())
+    const chars = createCharacters()
+    const t = setTimeout(() => setCharacters(chars), 0)
+    return () => clearTimeout(t)
   }, [createCharacters])
 
   useEffect(() => {

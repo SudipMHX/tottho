@@ -18,7 +18,11 @@ export async function GET(request: NextRequest) {
     matchingUserIds = users.map(u => u._id)
   }
 
-  let query: any = {}
+  interface ProfileQuery {
+    isShowcased?: boolean;
+    $or?: Array<Record<string, unknown>>;
+  }
+  const query: ProfileQuery = {}
   
   if (filter === 'featured') {
     query.isShowcased = true

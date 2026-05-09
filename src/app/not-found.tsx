@@ -40,10 +40,10 @@ export default function NotFound() {
         
         <div className="space-y-4 text-gray-400 mb-10 text-lg">
           <p>
-            The page you're looking for has been abducted by aliens, swallowed by a black hole, or maybe it just never existed. 🛸
+            The page you&apos;re looking for has been abducted by aliens, swallowed by a black hole, or maybe it just never existed. 🛸
           </p>
           <p className="text-sm text-gray-500 italic">
-            (Or maybe you just typed the URL wrong. We won't judge.)
+            (Or maybe you just typed the URL wrong. We won&apos;t judge.)
           </p>
         </div>
 

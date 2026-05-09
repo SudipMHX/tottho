@@ -8,7 +8,7 @@ import { useUploadThing } from '@/lib/uploadthing'
 
 interface Props {
   currentAvatar?: string
-  displayName?: string
+  // displayName?: string
 }
 
 const compressImage = async (file: File): Promise<File> => {
@@ -58,7 +58,7 @@ const compressImage = async (file: File): Promise<File> => {
   });
 };
 
-export default function AvatarUploader({ currentAvatar, displayName }: Props) {
+export default function AvatarUploader({ currentAvatar }: Props) {
   const [preview, setPreview] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)

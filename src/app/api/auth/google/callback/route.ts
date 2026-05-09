@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
     let user = await User.findOne({ $or: [{ oauthId, oauthProvider: 'google' }, { email }] })
 
     if (!user) {
-      let baseUsername = generateUsername(displayName)
+      const baseUsername = generateUsername(displayName)
       let username = baseUsername
       let counter = 1
       while (await User.findOne({ username })) {

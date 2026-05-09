@@ -15,7 +15,7 @@ export default function NavbarMobileMenu({ isLoggedIn }: { isLoggedIn: boolean }
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
-  useEffect(() => { setOpen(false) }, [pathname])
+  useEffect(() => { const t = setTimeout(() => setOpen(false), 0); return () => clearTimeout(t) }, [pathname])
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }

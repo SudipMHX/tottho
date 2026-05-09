@@ -23,7 +23,9 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const dimensions = useDimensions(containerRef as React.RefObject<HTMLElement | null>)
-  const trailId = useRef(uuidv4())
+  // Stable ID generated once per component instance — using useMemo not useRef
+  // so the value can be safely read during render without triggering the refs rule.
+  const trailId = useMemo(() => uuidv4(), [])
 
   const handlePointerMove = useCallback(
     (e: PointerEvent) => {
@@ -39,14 +41,14 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
       const x = Math.floor((e.clientX - rect.left) / pixelSize)
       const y = Math.floor((e.clientY - rect.top) / pixelSize)
       const pixelElement = document.getElementById(
-        `${trailId.current}-pixel-${x}-${y}`
+        `${trailId}-pixel-${x}-${y}`
       )
       if (pixelElement) {
         const animatePixel = (pixelElement as HTMLElement & { __animatePixel?: () => void }).__animatePixel
         if (animatePixel) animatePixel()
       }
     },
-    [pixelSize]
+    [pixelSize, trailId]
   )
 
   useEffect(() => {
@@ -56,6 +58,7 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
 
   const columns = useMemo(() => Math.ceil(dimensions.width / pixelSize), [dimensions.width, pixelSize])
   const rows    = useMemo(() => Math.ceil(dimensions.height / pixelSize), [dimensions.height, pixelSize])
+
 
   return (
     <div
@@ -67,7 +70,7 @@ const PixelTrail: React.FC<PixelTrailProps> = ({
           {Array.from({ length: columns }).map((_, colIndex) => (
             <PixelDot
               key={`${colIndex}-${rowIndex}`}
-              id={`${trailId.current}-pixel-${colIndex}-${rowIndex}`}
+              id={`${trailId}-pixel-${colIndex}-${rowIndex}`}
               size={pixelSize}
               fadeDuration={fadeDuration}
               delay={delay}

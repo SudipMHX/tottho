@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { motion } from 'motion/react'
 import { BeamsBackground } from '@/components/ui/beams-background'
-import { cn } from '@/lib/utils'
 import { ThemeProps } from './types'
 import LinkButton from '@/components/profile/LinkButton'
 import Link from 'next/link'

@@ -40,7 +40,9 @@ function StarLayer({
   const [boxShadow, setBoxShadow] = React.useState<string>("");
 
   React.useEffect(() => {
-    setBoxShadow(generateStars(count, starColor));
+    const shadow = generateStars(count, starColor);
+    const t = setTimeout(() => setBoxShadow(shadow), 0);
+    return () => clearTimeout(t);
   }, [count, starColor]);
 
   return (

@@ -64,7 +64,9 @@ export function BackgroundGradientAnimation({
   }, [bgStart, bgEnd, firstColor, secondColor, thirdColor, fourthColor, fifthColor, pointerColor, size, blendingValue])
 
   useEffect(() => {
-    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent))
+    const isSafariUA = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+    const t = setTimeout(() => setIsSafari(isSafariUA), 0)
+    return () => clearTimeout(t)
   }, [])
 
   useEffect(() => {

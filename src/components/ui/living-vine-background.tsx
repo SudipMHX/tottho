@@ -21,7 +21,8 @@ const LivingVineBackground = ({
   const animationFrameIdRef = useRef<number | null>(null)
   const mousePosRef = useRef({ x: typeof window !== 'undefined' ? window.innerWidth / 2 : 0, y: typeof window !== 'undefined' ? window.innerHeight / 2 : 0 })
   const pathHistoryRef = useRef<{x: number, y: number}[]>([])
-  const branchesRef = useRef<any[]>([])
+  interface BranchLike { life: number; update(): void; draw(): void }
+  const branchesRef = useRef<BranchLike[]>([])
 
   useEffect(() => {
     let destroyed = false
